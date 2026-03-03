@@ -1,0 +1,681 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BBQ 4 You - Premium Pakistani Catering, Event Management & Frozen Foods.">
+    <title data-en="BBQ 4 You | Authentic Pakistani Catering" data-ur="باربی کیو 4 یو | مستند پاکستانی کیٹرنگ">BBQ 4 You
+        | Authentic Pakistani Catering</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <!-- New Styled Logo with Icon -->
+            <a href="#" class="brand">
+                <svg class="brand-icon" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(50, 65) scale(1.1)" fill="#ea580c">
+                        <!-- Simplified & Well-Structured Crossed Fork and Knife -->
+                        <g transform="rotate(-40)">
+                            <!-- Knife -->
+                            <path d="M -4 -40 C 12 -40 12 -20 4 -10 C 2 -8 -4 -8 -4 -10 Z" />
+                            <rect x="-4" y="-12" width="7" height="50" rx="3.5" />
+                        </g>
+                        <g transform="rotate(40)">
+                            <!-- Fork -->
+                            <rect x="-12" y="-40" width="3" height="20" rx="1.5" />
+                            <rect x="-6" y="-40" width="3" height="20" rx="1.5" />
+                            <rect x="0" y="-40" width="3" height="20" rx="1.5" />
+                            <rect x="6" y="-40" width="3" height="20" rx="1.5" />
+                            <path d="M -12 -25 V -18 C -12 -4 9 -4 9 -18 V -25 Z" />
+                            <rect x="-3" y="-10" width="7" height="48" rx="3.5" />
+                        </g>
+                    </g>
+                </svg>
+                <div class="brand-text-wrap">
+                    <span class="logo-text">BarBQ<span class="stylish-4"
+                            style="margin: 0 4px; color: #ea580c;">4</span>You</span>
+                </div>
+            </a>
+
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-controls">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active" data-en="Home" data-ur="ہوم">Home</a></li>
+                    <li><a href="#about" data-en="About" data-ur="ہمارے بارے میں">About</a></li>
+                    <li><a href="#catering" data-en="Catering Menu" data-ur="کیٹرنگ مینو">Catering Menu</a>
+                    </li>
+                    <li><a href="#frozen-menu" data-en="Frozen Foods" data-ur="فروزن فوڈز">Frozen Foods</a>
+                    </li>
+                    <li><a href="#events" data-en="Events" data-ur="تقریبات">Events</a></li>
+                    <li><a href="order.html" class="btn btn-primary" data-en="Order Now" data-ur="آرڈر کریں"
+                            style="margin-top:0;">Order Now</a></li>
+                </ul>
+
+                <div class="utils">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ur">اردو</button>
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                        <span>🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-parallax-bg" id="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <span class="badge" data-en="Premium Catering Services" data-ur="پریمیم کیٹرنگ سروسز">Premium Catering
+                Services</span>
+            <h1 class="hero-title reveal-text" data-en="Exquisite Catering<br>& Event Management"
+                data-ur="شاندار کیٹرنگ<br>اور ایونٹ مینجمنٹ">Exquisite Catering<br>& Event
+                Management</h1>
+            <p class="hero-desc reveal-fade"
+                data-en="Elevate your events with authentic Pakistani taste. From our kitchen to your table, experience culinary perfection and flawless event setups."
+                data-ur="اپنے ایونٹس کو مستند پاکستانی ذائقے سے یادگار بنائیں۔ ہمارے کچن سے آپ کی ٹیبل تک، بے عیب خدمات کا تجربہ کریں۔">
+                Elevate your events with authentic Pakistani taste. From our kitchen to your table, experience culinary
+                perfection and flawless event setups.</p>
+            <div class="hero-btns reveal-up">
+                <a href="#catering" class="btn btn-primary" data-en="View Catering Menu"
+                    data-ur="کیٹرنگ مینو دیکھیں">View Catering Menu</a>
+                <a href="#frozen-menu" class="btn btn-outline" data-en="Explore Frozen Items"
+                    data-ur="فروزن آئٹمز تلاش کریں">Explore Frozen Items</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-padding bg-section">
+        <div class="container about-grid">
+            <div class="about-text scroll-reveal left">
+                <h2 class="section-title"
+                    data-en="A Taste of Tradition,<br>Crafted for <span class='highlight'>You</span>"
+                    data-ur="روایات کا ذائقہ،<br><span class='highlight'>آپ</span> کے لیے تیار کیا گیا">
+                    A Taste of
+                    Tradition,<br>Crafted for <span class='highlight'>You</span></h2>
+                <p data-en="Welcome to BBQ 4 You. We specialize in providing unforgettable catering experiences, grand event management, and premium frozen handcrafted delicacies across Pakistan."
+                    data-ur="باربی کیو 4 یو میں خوش آمدید۔ ہم پاکستان بھر میں ناقابل فراموش کیٹرنگ، شاندار ایونٹ مینجمنٹ اور اعلیٰ معیار کے فروزن آئٹمز فراہم کرنے میں مہارت رکھتے ہیں۔">
+                    Welcome to BBQ 4 You. We specialize in providing unforgettable catering experiences, grand event
+                    management, and premium frozen handcrafted delicacies across Pakistan.</p>
+                <p data-en="Whether it's a bustling wedding or a quick snack at home, every bite promises the perfect blend of rich, traditional spices."
+                    data-ur="چاہے یہ شادی کی تقریب ہو یا گھر میں فوری اسنیک، ہر نوالے میں روایتی مسالوں کا بہترین امتزاج ہے۔">
+                    Whether it's a bustling wedding or a quick snack at home, every bite promises the perfect blend of
+                    rich, traditional spices.</p>
+
+                <div class="features-wrapper">
+                    <div class="feature">
+                        <svg class="feat-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M11.3 4C14.7 4 17.5 7.1 17.3 10.7C17.1 14.3 14 17 10.3 16.8C9.4 16.7 8.5 16.4 7.7 15.9L5.4 18.2C5 18.6 4.4 18.6 4 18.2C3.6 17.8 3.6 17.2 4 16.8L6.3 14.5C4 11.4 4.5 7.1 7.6 4.8C8.7 4 10 3.8 11.3 4M10.8 6C9.5 6 8.4 6.6 7.7 7.6C6.1 9.7 6.6 12.7 8.7 14.3C9.4 14.8 10.2 15 11 15C13.2 15 15.1 13.2 15.3 11C15.5 8.4 13.5 6.2 11 6C10.9 6 10.9 6 10.8 6Z" />
+                        </svg>
+                        <div class="feat-text" data-en="Premium Catering" data-ur="پریمیم کیٹرنگ">Premium
+                            Catering</div>
+                    </div>
+                    <div class="feature">
+                        <svg class="feat-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M13,6V16H11V6H13Z" />
+                        </svg>
+                        <div class="feat-text" data-en="Frozen Delights" data-ur="فروزن آئٹمز">Frozen Delights
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <svg class="feat-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M14 6L10 12H13L10 20L19 10H15L18 4H14V6M5 3H19C20.1 3 21 3.9 21 5V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3M5 5V19H19V5H5Z" />
+                        </svg>
+                        <div class="feat-text" data-en="Event Management" data-ur="ایونٹ مینجمنٹ">Event
+                            Management</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-image-wrapper scroll-reveal right">
+                <img src="img/about-food.jpg" alt="Rich Pakistani Food Setup" class="about-img main-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Hot Catering Menu Section -->
+    <section id="catering" class="menu section-padding">
+        <div class="container">
+            <div class="section-header text-center scroll-reveal up">
+                <span class="subtitle" data-en="Live Cooking & Buffet" data-ur="لائیو کوکنگ اور بوفے">Live Cooking &
+                    Buffet</span>
+                <h2 class="section-title" data-en="Signature Catering Menu" data-ur="سگنیچر کیٹرنگ مینو">Signature
+                    Catering Menu</h2>
+                <p class="section-subtitle"
+                    data-en="Our legendary hot food items, prepared fresh for your events with premium ingredients."
+                    data-ur="ہمارے مشہور گرم کھانے کے آئٹمز، جو پریمیم اجزاء کے ساتھ آپ کی تقریبات کے لیے تازہ تیار کیے جاتے ہیں۔">
+                    Our legendary hot food items, prepared fresh for your events with premium ingredients.</p>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Catering 1 -->
+                <div class="menu-card scroll-reveal up">
+                    <div class="card-img-wrapper">
+                        <img src="img/biryani.jpg" alt="Biryani" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Authentic Chicken Biryani" data-ur="مستند چکن بریانی">Authentic
+                            Chicken Biryani
+                        </h3>
+                        <p data-en="Aromatic basmati rice cooked with succulent chicken and our secret blend of spices."
+                            data-ur="خوشبودار باسمتی چاول رسیلے چکن اور ہمارے خفیہ مسالوں کے ساتھ تیار کردہ۔">
+                            Aromatic
+                            basmati rice cooked with succulent chicken and our secret blend of spices.</p>
+                    </div>
+                </div>
+                <!-- Catering 2 -->
+                <div class="menu-card scroll-reveal up delay-1">
+                    <div class="card-img-wrapper">
+                        <img src="img/karahi.jpg" alt="Karahi" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Peshawari Mutton Karahi" data-ur="پشاوری مٹن کڑاہی">Peshawari Mutton
+                            Karahi</h3>
+                        <p data-en="Fresh mutton wok-tossed with tomatoes, green chilies, and lots of ginger."
+                            data-ur="ٹماٹر، ہری مرچ اور ادرک کے ساتھ تازہ مٹن کڑاہی۔">
+                            Fresh mutton wok-tossed with
+                            tomatoes, green chilies, and lots of ginger.</p>
+                    </div>
+                </div>
+                <!-- Catering 3 -->
+                <div class="menu-card scroll-reveal up delay-2">
+                    <div class="card-img-wrapper">
+                        <img src="img/frozen-seekh.jpg" alt="BBQ Mix" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Live BBQ Platter" data-ur="لائیو باربی کیو پلیٹر">Live BBQ
+                            Platter</h3>
+                        <p data-en="Chicken Tikka, Malai Boti, and Beef Seekh Kababs fresh off the glowing coals."
+                            data-ur="گرم کوئلوں پر تیار کردہ چکن تکہ، ملائی بوٹی اور بیف سیخ کباب۔">
+                            Chicken Tikka, Malai
+                            Boti, and Beef Seekh Kababs fresh off the glowing coals.</p>
+                    </div>
+                </div>
+                <!-- Catering 4 -->
+                <div class="menu-card scroll-reveal up delay-3">
+                    <div class="card-img-wrapper">
+                        <img src="img/qorma.jpg" alt="Qorma" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Shahi Beef Qorma" data-ur="شاہی بیف قورمہ">Shahi Beef Qorma</h3>
+                        <p data-en="Rich, creamy, and mildly spiced beef curry cooked with almonds and caramelized onions."
+                            data-ur="بادام اور پیاز کے ساتھ تیار کردہ لذیذ اور کریمی بیف قورمہ۔">
+                            Rich, creamy, and
+                            mildly spiced beef curry cooked with almonds and caramelized onions.</p>
+                    </div>
+                </div>
+                <!-- Catering 5: Sides -->
+                <div class="menu-card scroll-reveal up">
+                    <div class="card-img-wrapper">
+                        <img src="img/naan-roti.jpg" alt="Naan & Roti" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Assorted Naan & Roti" data-ur="نان اور روٹی">Assorted Naan & Roti</h3>
+                        <p data-en="Fresh from the tandoor: Garlic Naan, Roghani Naan, and traditional Tandoori Roti."
+                            data-ur="تندور سے تازہ: گارلک نان، روغنی نان، اور روایتی تندوری روٹی۔">
+                            Fresh from the
+                            tandoor: Garlic Naan, Roghani Naan, and traditional Tandoori Roti.</p>
+                    </div>
+                </div>
+                <!-- Catering 6: Salads -->
+                <div class="menu-card scroll-reveal up delay-1">
+                    <div class="card-img-wrapper">
+                        <img src="img/salads.jpg" alt="Salads & Raita" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Salads & Raita Station" data-ur="سلاد اور رائتہ">Salads & Raita Station
+                        </h3>
+                        <p data-en="Fresh Kachumar, Creamy Russian Salad, and cooling Mint Zeera Raita."
+                            data-ur="تازہ کچومر، کریمی رشین سلاد، اور ٹھنڈا پودینہ زیرہ رائتہ۔">
+                            Fresh Kachumar, Creamy
+                            Russian Salad, and cooling Mint Zeera Raita.</p>
+                    </div>
+                </div>
+                <!-- Catering 7: Drinks -->
+                <div class="menu-card scroll-reveal up delay-2">
+                    <div class="card-img-wrapper">
+                        <img src="img/drinks.jpg" alt="Tea & Drinks" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Traditional Drinks & Kashmiri Chai" data-ur="مشروبات اور کشمیری چائے">Traditional
+                            Drinks & Kashmiri Chai</h3>
+                        <p data-en="Refreshing Rooh Afza, Lassi, and steaming Kashmiri Pink Tea with nuts."
+                            data-ur="تازہ روح افزا، لسی، اور گرم کشمیری پنک چائے۔">
+                            Refreshing Rooh Afza, Lassi, and
+                            steaming Kashmiri Pink Tea with nuts.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-6 scroll-reveal up">
+                <a href="#contact" class="btn btn-primary" data-en="Book Catering for Event ->"
+                    data-ur="ایونٹ کے لیے کیٹرنگ بک کریں ->">Book Catering for Event -></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frozen Menu Section -->
+    <section id="frozen-menu" class="menu section-padding bg-section">
+        <div class="container">
+            <div class="section-header text-center scroll-reveal up">
+                <span class="subtitle" data-en="Ready to Fry & Eat" data-ur="فوری فرائی کریں اور کھائیں">Ready to Fry &
+                    Eat</span>
+                <h2 class="section-title" data-en="Premium Frozen Delights" data-ur="پریمیم فروزن آئٹمز">Premium Frozen
+                    Delights</h2>
+                <p class="section-subtitle"
+                    data-en="Stock up your freezer with our handcrafted, preservative-free frozen items."
+                    data-ur="ہمارے ہاتھ سے بنے ہوئے، محفوظ اور تازہ فروزن آئٹمز سے اپنا فریزر بھریں۔">
+                    Stock up your
+                    freezer with our handcrafted, preservative-free frozen items.</p>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Card 1 -->
+                <div class="menu-card scroll-reveal up">
+                    <div class="card-img-wrapper">
+                        <img src="img/frozen-shami.jpg" alt="Shami Kabab" class="card-img">
+                        <div class="card-overlay"><span class="price-tag">Rs 1,200 / Dozen</span></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Beef Shami Kabab" data-ur="بیف شامی کباب">Beef Shami Kabab</h3>
+                        <p data-en="Melt-in-your-mouth beef shami kababs made with premium cuts."
+                            data-ur="پریمیم گوشت سے بنے ہوئے نرم بیف شامی کباب۔">
+                            Melt-in-your-mouth beef shami kababs
+                            made with premium cuts.</p>
+                        <a href="https://wa.me/923000000000?text=Order Beef Shami Kabab"
+                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
+                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="menu-card scroll-reveal up delay-1">
+                    <div class="card-img-wrapper">
+                        <img src="img/frozen-samosa.jpg" alt="Chicken Samosa" class="card-img">
+                        <div class="card-overlay"><span class="price-tag">Rs 700 / Dozen</span></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Chicken Samosas" data-ur="چکن سموسے">Chicken Samosas</h3>
+                        <p data-en="Golden crispy pastry filled with savory minced chicken."
+                            data-ur="چکن کے قیمے سے بھرے ہوئے گولڈن کرسپی سموسے۔">
+                            Golden crispy pastry filled with
+                            savory minced chicken.</p>
+                        <a href="https://wa.me/923000000000?text=Order Chicken Samosas"
+                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
+                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="menu-card scroll-reveal up delay-2">
+                    <div class="card-img-wrapper">
+                        <img src="img/frozen-rolls.jpg" alt="Spring Rolls" class="card-img">
+                        <div class="card-overlay"><span class="price-tag">Rs 800 / Dozen</span></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Vegetable Spring Rolls" data-ur="ویجیٹیبل اسپرنگ رولز">Vegetable
+                            Spring Rolls</h3>
+                        <p data-en="Crunchy on the outside, packed with seasoned vegetables."
+                            data-ur="مسالے دار سبزیوں سے بھرے ہوئے کرسپی رولز۔">
+                            Crunchy on the outside, packed with
+                            seasoned vegetables.</p>
+                        <a href="https://wa.me/923000000000?text=Order Spring Rolls"
+                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
+                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="menu-card scroll-reveal up delay-3">
+                    <div class="card-img-wrapper">
+                        <img src="img/karahi.jpg" alt="Chapli Kabab" class="card-img">
+                        <div class="card-overlay"><span class="price-tag">Rs 1,400 / KG</span></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Peshawari Chapli Kabab" data-ur="پشاوری چپلی کباب">Peshawari Chapli
+                            Kabab</h3>
+                        <p data-en="Authentic, large, spices-infused minced meat patties."
+                            data-ur="مستند، بڑے اور مسالے دار قیمے کے کباب۔">Authentic,
+                            large, spices-infused minced
+                            meat patties.</p>
+                        <a href="https://wa.me/923000000000?text=Order Chapli Kabab"
+                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
+                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="menu-card scroll-reveal up">
+                    <div class="card-img-wrapper">
+                        <img src="img/frozen-samosa.jpg" alt="Aloo Samosa" class="card-img">
+                        <div class="card-overlay"><span class="price-tag">Rs 400 / Dozen</span></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Punjabi Aloo Samosa" data-ur="پنجابی آلو سموسہ">Punjabi Aloo Samosa
+                        </h3>
+                        <p data-en="The classic potato and pea filled triangle of joy."
+                            data-ur="آلو اور مٹر سے بھرا روایتی سموسہ۔">The classic potato
+                            and pea filled triangle of
+                            joy.</p>
+                        <a href="https://wa.me/923000000000?text=Order Aloo Samosas"
+                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
+                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="menu-card scroll-reveal up delay-1">
+                    <div class="card-img-wrapper">
+                        <img src="img/frozen-seekh.jpg" alt="Seekh Kabab" class="card-img">
+                        <div class="card-overlay"><span class="price-tag">Rs 1,500 / KG</span></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Half-Cooked Seekh Kabab" data-ur="ہاف ککڈ سیخ کباب">Half-Cooked Seekh
+                            Kabab</h3>
+                        <p data-en="Ready to be grilled or pan-fried in minutes."
+                            data-ur="فوری فرائی یا گرل کرنے کے لیے تیار۔">Ready to be
+                            grilled or pan-fried in minutes.
+                        </p>
+                        <a href="https://wa.me/923000000000?text=Order Seekh Kabab" class="btn btn-sm btn-whatsapp mt-4"
+                            target="_blank" data-en="Order on WhatsApp" data-ur="واٹس ایپ پر آرڈر کریں">Order on
+                            WhatsApp</a>
+                    </div>
+                </div>
+                <!-- Card 7: Frozen Paratha -->
+                <div class="menu-card scroll-reveal up delay-2">
+                    <div class="card-img-wrapper">
+                        <img src="img/paratha.jpg" alt="Frozen Paratha" class="card-img">
+                        <div class="card-overlay"><span class="price-tag">Rs 450 / Pack of 10</span></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Classic Lacha Paratha" data-ur="کلاسک لچھا پراٹھا">Classic Lacha
+                            Paratha</h3>
+                        <p data-en="Flaky, buttery, and multi-layered ready to cook parathas."
+                            data-ur="تہہ دار اور مزیدار پراٹھے پکانے کے لیے تیار۔">
+                            Flaky, buttery, and multi-layered
+                            ready to cook parathas.</p>
+                        <a href="https://wa.me/923000000000?text=Order Lacha Paratha"
+                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
+                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                    </div>
+                </div>
+                <!-- Card 8: Frozen Tikka Boti -->
+                <div class="menu-card scroll-reveal up delay-3">
+                    <div class="card-img-wrapper">
+                        <img src="img/tikka-boti.jpg" alt="Marinated Tikka Boti" class="card-img">
+                        <div class="card-overlay"><span class="price-tag">Rs 1,600 / KG</span></div>
+                    </div>
+                    <div class="card-content">
+                        <h3 data-en="Marinated Tikka Boti" data-ur="میرینیٹڈ چکن تکہ بوٹی">Marinated
+                            Tikka Boti</h3>
+                        <p data-en="Boneless chicken fully marinated in traditional spicy yogurt."
+                            data-ur="بغیر ہڈی چکن، روایتی مسالوں میں میرینیٹ شدہ۔">
+                            Boneless chicken fully marinated in
+                            traditional spicy yogurt.</p>
+                        <a href="https://wa.me/923000000000?text=Order Tikka Boti" class="btn btn-sm btn-whatsapp mt-4"
+                            target="_blank" data-en="Order on WhatsApp" data-ur="واٹس ایپ پر آرڈر کریں">Order on
+                            WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Management Section -->
+    <section id="events" class="catering section-padding">
+        <div class="container">
+            <div class="catering-layout">
+                <div class="catering-info scroll-reveal left">
+                    <span class="subtitle" data-en="Full Scale Services" data-ur="مکمل خدمات">Full Scale
+                        Services</span>
+                    <h2 class="section-title" data-en="Complete Event<br>Management" data-ur="مکمل ایونٹ<br>مینجمنٹ">
+                        Complete Event<br>Management</h2>
+                    <p data-en="We bring your vision to life. From elegant weddings to highly coordinated corporate affairs, BBQ 4 You manages everything from stage setup to the final dessert."
+                        data-ur="ہم آپ کے خوابوں کو حقیقت بناتے ہیں۔ شاندار شادیوں سے لے کر کارپوریٹ ایونٹس تک، ہم ہر چیز کا انتظام کرتے ہیں۔">
+                        We bring your vision to life. From elegant weddings to highly coordinated corporate affairs, BBQ
+                        4 You manages everything from stage setup to the final dessert.</p>
+
+                    <ul class="service-list">
+                        <!-- Accordion Item 1 -->
+                        <li>
+                            <button class="accordion-header">
+                                <svg class="service-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,19.93C7.05,19.43 4,16.04 4,12C4,7.96 7.05,4.57 11,4.07V19.93M13,4.07C16.95,4.57 20,7.96 20,12C20,16.04 16.95,19.43 13,19.93V4.07Z" />
+                                </svg>
+                                <div><strong data-en="Stunning Decor & Stages" data-ur="شاندار ڈیکور اور اسٹیج">Stunning
+                                        Decor & Stages</strong></div>
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <span data-en="Floral arrangements, marquees, and beautiful lighting designs."
+                                    data-ur="پھولوں کی سجاوٹ، مارکی اور خوبصورت لائٹنگ۔">Floral
+                                    arrangements, marquees,
+                                    and beautiful lighting designs.</span>
+                                <ul class="dummy-list">
+                                    <li data-en="Custom Floral Mandaps & Centerpieces"
+                                        data-ur="حسب ضرورت پھولوں کی سجاوٹ">Custom Floral Mandaps &
+                                        Centerpieces</li>
+                                    <li data-en="Elegant Marquee Setup for 500+ Guests"
+                                        data-ur="500+ مہمانوں کے لیے مارکی سیٹ اپ">Elegant Marquee
+                                        Setup for 500+ Guests
+                                    </li>
+                                    <li data-en="Thematic LED Lighting & Ambiance" data-ur="خوبصورت ایل ای ڈی لائٹنگ">
+                                        Thematic LED Lighting & Ambiance</li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Accordion Item 2 -->
+                        <li>
+                            <button class="accordion-header">
+                                <svg class="service-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M22,10V6H2V10H22M19,10V18A2,2 0 0,1 17,20H7A2,2 0 0,1 5,18V10H19M12,12A2,2 0 0,0 10,14A2,2 0 0,0 12,16A2,2 0 0,0 14,14A2,2 0 0,0 12,12Z" />
+                                </svg>
+                                <div><strong data-en="Professional Waitstaff" data-ur="پیشہ ورانہ ویٹرز">Professional
+                                        Waitstaff</strong></div>
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <span data-en="Highly trained team for smooth food and beverage service."
+                                    data-ur="کھانے کی ہموار سروس کے لیے اعلیٰ تربیت یافتہ ٹیم۔">Highly
+                                    trained team for
+                                    smooth food and beverage service.</span>
+                                <ul class="dummy-list">
+                                    <li data-en="Uniformed Male & Female Waiters" data-ur="یونیفارم والے ویٹرز">
+                                        Uniformed Male & Female Waiters</li>
+                                    <li data-en="Live Chef Stations & Setup" data-ur="لائیو شیف اسٹیشنز اور سیٹ اپ">Live
+                                        Chef Stations & Setup</li>
+                                    <li data-en="Full Cleanup & Teardown Services" data-ur="مکمل صفائی کی خدمات">Full
+                                        Cleanup & Teardown Services</li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Accordion Item 3 -->
+                        <li>
+                            <button class="accordion-header">
+                                <svg class="service-icon" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 3C7.58 3 4 4.79 4 7V17C4 19.21 7.58 21 12 21C16.42 21 20 19.21 20 17V7C20 4.79 16.42 3 12 3M12 19C8.69 19 6 17.66 6 17V14.77C7.61 15.55 9.72 16 12 16C14.28 16 16.39 15.55 18 14.77V17C18 17.66 15.31 19 12 19M18 12.27C16.39 13.04 14.28 13.5 12 13.5C9.72 13.5 7.61 13.04 6 12.27V10C6 10.66 8.69 12 12 12C15.31 12 18 10.66 18 10V12.27M12 9C8.69 9 6 7.66 6 7C6 6.34 8.69 5 12 5C15.31 5 18 6.34 18 7C18 7.66 15.31 9 12 9Z" />
+                                </svg>
+                                <div><strong data-en="Sound & Logistics" data-ur="ساؤنڈ اور لاجسٹکس">Sound &
+                                        Logistics</strong></div>
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <span data-en="Handling the technical details so you can enjoy your day."
+                                    data-ur="ایونٹ کی تمام تکنیکی تفصیلات کا مکمل انتظام۔">Handling
+                                    the technical
+                                    details so you can enjoy your day.</span>
+                                <ul class="dummy-list">
+                                    <li data-en="Premium Audio & PA Systems" data-ur="اعلیٰ معیار کا ساؤنڈ سسٹم">Premium
+                                        Audio & PA Systems</li>
+                                    <li data-en="Transport & Generator Backups" data-ur="ٹرانسپورٹ اور جنریٹر بیک اپ">
+                                        Transport & Generator Backups</li>
+                                    <li data-en="Photography & Videography Sourcing" data-ur="فوٹوگرافی اور ویڈیوگرافی">
+                                        Photography & Videography Sourcing</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-4" data-en="Consult With Us"
+                        data-ur="ہم سے مشاورت کریں">Consult With Us</a>
+                </div>
+
+                <div class="catering-gallery scroll-reveal right">
+                    <div class="gallery-grid">
+                        <img src="img/cater-1.jpg" alt="Wedding Setup" class="g-img-1">
+                        <img src="img/cater-2.jpg" alt="Buffet Service" class="g-img-2">
+                        <img src="img/cater-3.jpg" alt="Live BBQ" class="g-img-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="contact-form-section bg-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="subtitle" data-en="Get in Touch" data-ur="رابطہ کریں">Get in Touch</span>
+                <h2 class="section-title" data-en="Send Us a Message" data-ur="ہمیں پیغام بھیجیں">Send Us a Message</h2>
+                <p class="section-subtitle"
+                    data-en="Have a question or want to discuss an event? Fill out the form below."
+                    data-ur="کوئی سوال ہے یا ایونٹ پر بات کرنا چاہتے ہیں؟ نیچے دیا گیا فارم پُر کریں۔">Have a question
+                    or want to discuss an event? Fill out the form below.</p>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <form id="mainContactForm" class="contact-form"
+                    onsubmit="event.preventDefault(); alert('Message sent successfully!'); this.reset();">
+                    <div class="contact-form-grid">
+                        <div class="form-group">
+                            <label for="c-name" data-en="Name" data-ur="نام">Name</label>
+                            <input type="text" id="c-name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-email" data-en="Email" data-ur="ای میل">Email</label>
+                            <input type="email" id="c-email" required placeholder="your.email@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="c-subject" data-en="Subject" data-ur="موضوع">Subject</label>
+                        <input type="text" id="c-subject" placeholder="How can we help?">
+                    </div>
+                    <div class="form-group mt-4">
+                        <label for="c-message" data-en="Message" data-ur="پیغام">Message</label>
+                        <textarea id="c-message" rows="5" required placeholder="Type your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-6" data-en="Send Message"
+                        data-ur="پیغام بھیجیں">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <svg class="brand-icon" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(50, 65) scale(1.1)" fill="#ea580c">
+                            <!-- Simplified & Well-Structured Crossed Fork and Knife -->
+                            <g transform="rotate(-40)">
+                                <!-- Knife -->
+                                <path d="M -4 -40 C 12 -40 12 -20 4 -10 C 2 -8 -4 -8 -4 -10 Z" />
+                                <rect x="-4" y="-12" width="7" height="50" rx="3.5" />
+                            </g>
+                            <g transform="rotate(40)">
+                                <!-- Fork -->
+                                <rect x="-12" y="-40" width="3" height="20" rx="1.5" />
+                                <rect x="-6" y="-40" width="3" height="20" rx="1.5" />
+                                <rect x="0" y="-40" width="3" height="20" rx="1.5" />
+                                <rect x="6" y="-40" width="3" height="20" rx="1.5" />
+                                <path d="M -12 -25 V -18 C -12 -4 9 -4 9 -18 V -25 Z" />
+                                <rect x="-3" y="-10" width="7" height="48" rx="3.5" />
+                            </g>
+                        </g>
+                    </svg>
+                    <div class="brand-text-wrap">
+                        <span class="logo-text">BarBQ<span class="stylish-4"
+                                style="margin: 0 4px; color: #ea580c;">4</span>You</span>
+                    </div>
+                </div>
+                <p data-en="Delivering authentic Pakistani flavors with premium quality and unmatched service."
+                    data-ur="پریمیم کوالٹی کے ساتھ مستند پاکستانی ذائقے۔">
+                    Delivering authentic Pakistani flavors with
+                    premium quality and unmatched service.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/923000000000" aria-label="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.662-2.062-.173-.298-.018-.46.13-.609.134-.135.297-.348.446-.521.151-.174.2-.298.3-.497.098-.198.05-.371-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.571-.012c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3 data-en="Quick Links" data-ur="اہم لنکس">Quick Links</h3>
+                <ul>
+                    <li><a href="#home" data-en="Home" data-ur="ہوم">Home</a></li>
+                    <li><a href="#about" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a></li>
+                    <li><a href="#frozen-menu" data-en="Frozen Menu" data-ur="فروزن مینو">Frozen Menu</a></li>
+                    <li><a href="#catering" data-en="Catering & Events" data-ur="کیٹرنگ اور ایونٹس">Catering &
+                            Events</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3 data-en="Contact Info" data-ur="رابطہ کی معلومات">Contact Info</h3>
+                <ul>
+                    <li><a href="https://wa.me/923000000000" target="_blank">📞 +92 300 000 0000</a></li>
+                    <li><a href="#contact-form">✉️ info@bbq4you.pk</a></li>
+                    <li><a href="https://www.google.com/maps/search/?api=1&query=123+Food+Street+Lahore+Pakistan"
+                            target="_blank" data-en="📍 123 Food Street, Lahore, Pakistan"
+                            data-ur="📍 123 فوڈ سٹریٹ، لاہور، پاکستان">📍 123
+                            Food Street, Lahore, Pakistan</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container text-center border-t pt-4 mt-6">
+            <p>&copy; 2026 BBQ 4 You. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

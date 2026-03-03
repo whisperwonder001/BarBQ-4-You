@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="130" viewBox="0 0 500 130">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;900&amp;display=swap');
+            .t-bar { font-family: 'Outfit', system-ui, sans-serif; font-weight: 900; fill: #212121; }
+            .t-bq { font-family: 'Outfit', system-ui, sans-serif; font-weight: 900; fill: #E53935; }
+            .t-4 { font-family: 'Outfit', system-ui, sans-serif; font-weight: 700; fill: #ea580c; font-style: italic;}
+            .t-you { font-family: 'Outfit', system-ui, sans-serif; font-weight: 700; fill: #212121; }
+            .t-sub { font-family: 'Outfit', system-ui, sans-serif; font-weight: 600; fill: #757575; letter-spacing: 3px; }
+            .cutlery-fill { fill: #ea580c; }
+            @media (prefers-color-scheme: dark) {
+                .t-bar, .t-you { fill: #FFFFFF; }
+                .t-sub { fill: #B0BEC5; }
+            }
+        </style>
+    </defs>
+    <g transform="translate(0, 5) scale(0.9)">
+        <!-- Icon: Solid Silhouette Crossed Fork and Knife -->
+        <g transform="translate(50, 65) scale(1.25)">
+            <g transform="rotate(-40)">
+                <!-- Fork -->
+                <rect x="-14" y="-40" width="5" height="24" rx="2.5" fill="#ea580c" />
+                <rect x="-5" y="-40" width="5" height="24" rx="2.5" fill="#ea580c" />
+                <rect x="4" y="-40" width="5" height="24" rx="2.5" fill="#ea580c" />
+                <rect x="13" y="-40" width="5" height="24" rx="2.5" fill="#ea580c" />
+                <path d="M -14 -22 V -14 C -14 4 18 4 18 -14 V -22 Z" fill="#ea580c" />
+                <rect x="-3" y="-5" width="10" height="48" rx="5" fill="#ea580c" />
+            </g>
+            <g transform="rotate(40)">
+                <!-- Knife -->
+                <path d="M -3 -42 C 22 -42 22 -8 8 2 C 2 6 -3 6 -3 2 Z" fill="#ea580c" />
+                <rect x="-3" y="-2" width="10" height="45" rx="5" fill="#ea580c" />
+            </g>
+        </g>
+    </g>
+    <g transform="translate(100, 15)">
+        <text x="0" y="60">
+            <tspan class="t-bar" font-size="64">Bar</tspan><tspan class="t-bq" font-size="64">BQ</tspan>
+            <tspan class="t-bar" font-size="64"> </tspan>
+            <tspan class="t-4" font-size="60" dy="-5">4</tspan>
+            <tspan class="t-you" font-size="60" dy="0"> You</tspan>
+        </text>
+        <text x="5" y="95" class="t-sub" font-size="14">FROZEN FOODS &amp; CATERING</text>
+    </g>
+</svg>

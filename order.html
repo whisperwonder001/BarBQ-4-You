@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BBQ 4 You - Order Form.">
+    <title data-en="Order Now | BBQ 4 You" data-ur="آرڈر کریں | باربی کیو 4 یو">Order Now | BBQ 4 You</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar"
+        style="background: var(--clr-nav-bg); backdrop-filter: blur(10px); padding: 1rem 0; box-shadow: var(--shadow-sm);">
+        <div class="container nav-container">
+            <!-- New Styled Logo with Icon -->
+            <a href="index.html" class="brand">
+                <svg class="brand-icon" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(50, 65) scale(1.1)" fill="#ea580c">
+                        <!-- Simplified & Well-Structured Crossed Fork and Knife -->
+                        <g transform="rotate(-40)">
+                            <!-- Knife -->
+                            <path d="M -4 -40 C 12 -40 12 -20 4 -10 C 2 -8 -4 -8 -4 -10 Z" />
+                            <rect x="-4" y="-12" width="7" height="50" rx="3.5" />
+                        </g>
+                        <g transform="rotate(40)">
+                            <!-- Fork -->
+                            <rect x="-12" y="-40" width="3" height="20" rx="1.5" />
+                            <rect x="-6" y="-40" width="3" height="20" rx="1.5" />
+                            <rect x="0" y="-40" width="3" height="20" rx="1.5" />
+                            <rect x="6" y="-40" width="3" height="20" rx="1.5" />
+                            <path d="M -12 -25 V -18 C -12 -4 9 -4 9 -18 V -25 Z" />
+                            <rect x="-3" y="-10" width="7" height="48" rx="3.5" />
+                        </g>
+                    </g>
+                </svg>
+                <div class="brand-text-wrap">
+                    <span class="logo-text" style="color: var(--clr-nav-text);">BarBQ<span class="stylish-4"
+                            style="margin: 0 4px; color: #ea580c;">4</span>You</span>
+                </div>
+            </a>
+
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-controls">
+                <ul class="nav-links">
+                    <li><a href="index.html#home" data-en="Home" data-ur="ہوم"
+                            style="color: var(--clr-nav-text);">Home</a></li>
+                    <li><a href="index.html#catering" data-en="Catering Menu" data-ur="کیٹرنگ مینو"
+                            style="color: var(--clr-nav-text);">Catering Menu</a></li>
+                    <li><a href="index.html#frozen-menu" data-en="Frozen Foods" data-ur="فروزن فوڈز"
+                            style="color: var(--clr-nav-text);">Frozen Foods</a></li>
+                    <li><a href="order.html" class="btn btn-primary active" data-en="Order Now" data-ur="آرڈر کریں"
+                            style="margin-top:0;">Order Now</a></li>
+                </ul>
+
+                <div class="utils">
+                    <button class="lang-btn active" data-lang="en" style="color: var(--clr-text-muted);">EN</button>
+                    <button class="lang-btn" data-lang="ur" style="color: var(--clr-text-muted);">اردو</button>
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode" style="color: var(--clr-nav-text);">
+                        <span>🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Order Form Section -->
+    <section class="section-padding" style="margin-top: 80px;">
+        <div class="container text-center">
+            <span class="subtitle" data-en="Secure Your Order" data-ur="اپنا آرڈر محفوظ کریں">Secure Your Order</span>
+            <h2 class="section-title" data-en="Place an Order" data-ur="آرڈر دیں">Place an Order</h2>
+            <p class="section-subtitle"
+                data-en="Fill out the form below to order your favorite BBQ and Frozen Delight items. We'll contact you to confirm the details."
+                data-ur="باربی کیو اور فروزن آئٹمز کا آرڈر دینے کے لیے نیچے دیا گیا فارم پُر کریں۔ تفصیلات کی تصدیق کے لیے ہم آپ سے رابطہ کریں گے۔">
+                Fill out the form below to order your favorite BBQ and Frozen Delight items. We'll contact you to
+                confirm the details.
+            </p>
+        </div>
+
+        <div class="container form-container">
+            <form id="orderForm" class="order-form"
+                onsubmit="event.preventDefault(); alert('Order placed successfully! We will contact you soon.'); window.location.href='index.html';">
+                <div class="form-group">
+                    <label for="name" data-en="Full Name" data-ur="پورا نام">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="phone" data-en="Phone Number" data-ur="فون نمبر">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="0300 0000000">
+                </div>
+                <div class="form-group">
+                    <label for="orderType" data-en="Order Type" data-ur="آرڈر کی قسم">Order Type</label>
+                    <select id="orderType" name="orderType" required>
+                        <option value="" disabled selected data-en="Select an option" data-ur="ایک آپشن منتخب کریں">
+                            Select an option</option>
+                        <option value="catering" data-en="Catering Service" data-ur="کیٹرنگ سروس">Catering Service
+                        </option>
+                        <option value="frozen" data-en="Frozen Foods" data-ur="فروزن فوڈز">Frozen Foods</option>
+                        <option value="both" data-en="Both Catering & Frozen Foods" data-ur="کیٹرنگ اور فروزن فوڈز">Both
+                            Catering & Frozen Foods</option>
+                    </select>
+                </div>
+                <div class="form-group" id="dynamicItemsSection"
+                    style="display: none; border: 1px solid var(--clr-border); padding: 1.5rem; border-radius: 10px; background: rgba(0,0,0,0.02); margin-top: 1rem;">
+                    <h4 style="margin-bottom: 1rem; color: var(--clr-text-main);" data-en="Add Items to Your Order"
+                        data-ur="اپنے آرڈر میں آئٹمز شامل کریں">Add Items to Your Order</h4>
+
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="form-group">
+                            <label for="itemSelect" data-en="Select Item" data-ur="آئٹم منتخب کریں">Select Item</label>
+                            <select id="itemSelect">
+                                <option value="" disabled selected data-en="Choose an item..."
+                                    data-ur="ایک آئٹم منتخب کریں...">Choose an item...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; align-items: end;">
+                        <div class="form-group">
+                            <label for="unitSelect" data-en="Quantity Type (Unit)"
+                                data-ur="مقدار کی قسم (یونٹ)">Quantity Type (Unit)</label>
+                            <select id="unitSelect">
+                                <option value="KG" data-en="KG" data-ur="کلو گرام">KG</option>
+                                <option value="Dozen" data-en="Dozen" data-ur="درجن">Dozen</option>
+                                <option value="Pack" data-en="Pack" data-ur="پیکٹ">Pack</option>
+                                <option value="Persons" data-en="Persons / Plates" data-ur="افراد / پلیٹیں">Persons /
+                                    Plates</option>
+                                <option value="Pieces" data-en="Pieces" data-ur="عدد">Pieces</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemQty" data-en="Quantity Amount" data-ur="مقدار">Quantity Amount</label>
+                            <input type="number" id="itemQty" min="1" value="1">
+                        </div>
+                    </div>
+
+                    <button type="button" id="addItemBtn" class="btn btn-outline"
+                        style="background: var(--clr-bg-main); color: var(--clr-primary); border-color: var(--clr-primary); width: 100%; border-radius: 10px;"
+                        data-en="+ Add Item" data-ur="آئٹم شامل کریں">+ Add Item</button>
+
+                    <div id="addedItemsList" style="margin-top: 1.5rem; text-align: left;">
+                        <strong data-en="Your Selected Items:" data-ur="آپ کے منتخب کردہ آئٹمز:"
+                            style="color: var(--clr-primary);">Your Selected Items:</strong>
+                        <ul id="itemsUl"
+                            style="list-style: none; padding: 0; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                        </ul>
+                        <p id="noItemsMsg" style="color: var(--clr-text-muted); font-size: 0.9rem;"
+                            data-en="No items added yet." data-ur="ابھی تک کوئی آئٹم شامل نہیں کیا گیا۔">No items added
+                            yet.</p>
+                    </div>
+
+                    <!-- Hidden field to submit formatted items as part of the form string -->
+                    <input type="hidden" id="details" name="details">
+                </div>
+                <div class="form-group">
+                    <div class="form-group"
+                        style="margin-top: 1rem; border-top: 1px solid var(--clr-border); padding-top: 1.5rem;">
+                        <h4 style="margin-bottom: 1rem; color: var(--clr-text-main);"
+                            data-en="Payment Method (Advanced Payment Only)"
+                            data-ur="ادائیگی کا طریقہ (صرف پیشگی ادائیگی)">Payment Method (Advanced Payment Only)</h4>
+                        <p style="color: var(--clr-text-muted); font-size: 0.9rem; margin-bottom: 1rem;"
+                            data-en="Please note that we only accept advanced payments to confirm your order."
+                            data-ur="براہ کرم نوٹ کریں کہ ہم آپ کے آرڈر کی تصدیق کے لیے صرف پیشگی ادائیگی قبول کرتے ہیں۔">
+                            Please note that we only accept advanced payments to confirm your order.
+                        </p>
+
+                        <div
+                            style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; text-align: left; margin: 0 auto; max-width: fit-content;">
+                            <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+                                <input type="radio" name="paymentMethod" value="card" checked
+                                    style="margin: 0; cursor: pointer; transform: scale(1.2);">
+                                <span data-en="Credit / Debit Card" data-ur="کریڈٹ / ڈیبٹ کارڈ">Credit / Debit
+                                    Card</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+                                <input type="radio" name="paymentMethod" value="wallet"
+                                    style="margin: 0; cursor: pointer; transform: scale(1.2);">
+                                <span data-en="Digital Wallet (EasyPaisa / JazzCash)"
+                                    data-ur="ڈیجیٹل والیٹ (ایزی پیسہ / جاز کیش)">Digital Wallet (EasyPaisa /
+                                    JazzCash)</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+                                <input type="radio" name="paymentMethod" value="bank"
+                                    style="margin: 0; cursor: pointer; transform: scale(1.2);">
+                                <span data-en="Direct Bank Transfer" data-ur="براہ راست بینک ٹرانسفر">Direct Bank
+                                    Transfer</span>
+                            </label>
+                        </div>
+
+                        <!-- Dynamic Payment Fields -->
+                        <div id="paymentFields"
+                            style="margin-top: 1.5rem; padding: 1rem; border-radius: 10px; background: rgba(0,0,0,0.02); border: 1px solid var(--clr-border);">
+
+                            <!-- Card Fields -->
+                            <div id="cardFields" style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="form-group" style="text-align: left;">
+                                    <label data-en="Card Number" data-ur="کارڈ نمبر">Card Number</label>
+                                    <input type="text" placeholder="XXXX XXXX XXXX XXXX">
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div class="form-group" style="text-align: left;">
+                                        <label data-en="Expiry Date" data-ur="تاریخ تنسیخ">Expiry Date</label>
+                                        <input type="text" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group" style="text-align: left;">
+                                        <label data-en="CVV" data-ur="سی وی وی">CVV</label>
+                                        <input type="text" placeholder="123">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Wallet Fields -->
+                            <div id="walletFields" style="display: none; flex-direction: column; gap: 1rem;">
+                                <div class="form-group" style="text-align: left;">
+                                    <label data-en="Wallet Type" data-ur="والیٹ کی قسم">Wallet Type</label>
+                                    <select>
+                                        <option value="easypaisa" data-en="EasyPaisa" data-ur="ایزی پیسہ">EasyPaisa
+                                        </option>
+                                        <option value="jazzcash" data-en="JazzCash" data-ur="جاز کیش">JazzCash</option>
+                                        <option value="nayapay" data-en="NayaPay" data-ur="نیا پے">NayaPay</option>
+                                    </select>
+                                </div>
+                                <p style="color: var(--clr-text-main); font-size: 0.95rem; margin-top: 0.5rem;"
+                                    data-en="You will be redirected to the secure payment portal after submitting your order to complete the transaction."
+                                    data-ur="اپنا آرڈر جمع کرانے کے بعد آپ کو محفوظ ادائیگی کے پورٹل پر بھیج دیا جائے گا۔">
+                                    You will be redirected to the secure payment portal after submitting your order to
+                                    complete the transaction.
+                                </p>
+                            </div>
+
+                            <!-- Bank Transfer Fields -->
+                            <div id="bankFields" style="display: none; flex-direction: column; gap: 1rem;">
+                                <p style="color: var(--clr-text-main); font-size: 0.95rem; margin-bottom: 0.5rem;"
+                                    data-en="Upon confirming your order, you will receive our official bank details via WhatsApp or Email to proceed with the secure transfer."
+                                    data-ur="اپنے آرڈر کی تصدیق کرنے کے بعد، آپ کو محفوظ منتقلی کے لیے ہمارے آفیشل بینک کی تفصیلات واٹس ایپ یا ای میل کے ذریعے موصول ہوں گی۔">
+                                    Upon confirming your order, you will receive our official bank details via WhatsApp
+                                    or Email to proceed with the secure transfer.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" data-en="Submit Order"
+                        data-ur="آرڈر بھیجیں">Submit Order</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <svg class="brand-icon" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(50, 65) scale(1.1)" fill="#ea580c">
+                            <!-- Simplified & Well-Structured Crossed Fork and Knife -->
+                            <g transform="rotate(-40)">
+                                <!-- Knife -->
+                                <path d="M -4 -40 C 12 -40 12 -20 4 -10 C 2 -8 -4 -8 -4 -10 Z" />
+                                <rect x="-4" y="-12" width="7" height="50" rx="3.5" />
+                            </g>
+                            <g transform="rotate(40)">
+                                <!-- Fork -->
+                                <rect x="-12" y="-40" width="3" height="20" rx="1.5" />
+                                <rect x="-6" y="-40" width="3" height="20" rx="1.5" />
+                                <rect x="0" y="-40" width="3" height="20" rx="1.5" />
+                                <rect x="6" y="-40" width="3" height="20" rx="1.5" />
+                                <path d="M -12 -25 V -18 C -12 -4 9 -4 9 -18 V -25 Z" />
+                                <rect x="-3" y="-10" width="7" height="48" rx="3.5" />
+                            </g>
+                        </g>
+                    </svg>
+                    <div class="brand-text-wrap">
+                        <span class="logo-text" style="color: var(--clr-nav-text);">BarBQ<span class="stylish-4"
+                                style="margin: 0 4px; color: #ea580c;">4</span>You</span>
+                    </div>
+                </div>
+                <p data-en="Delivering authentic Pakistani flavors with premium quality and unmatched service."
+                    data-ur="پریمیم کوالٹی کے ساتھ مستند پاکستانی ذائقے۔">
+                    Delivering authentic Pakistani flavors with
+                    premium quality and unmatched service.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3 data-en="Quick Links" data-ur="اہم لنکس">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home" data-en="Home" data-ur="ہوم">Home</a></li>
+                    <li><a href="index.html#about" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a></li>
+                    <li><a href="index.html#frozen-menu" data-en="Frozen Menu" data-ur="فروزن مینو">Frozen Menu</a></li>
+                    <li><a href="index.html#catering" data-en="Catering & Events" data-ur="کیٹرنگ اور ایونٹس">Catering &
+                            Events</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3 data-en="Contact Info" data-ur="رابطہ کی معلومات">Contact Info</h3>
+                <ul>
+                    <li><a href="https://wa.me/923000000000" target="_blank">📞 +92 300 000 0000</a></li>
+                    <li><a href="index.html#contact-form">✉️ info@bbq4you.pk</a></li>
+                    <li><a href="https://www.google.com/maps/search/?api=1&query=123+Food+Street+Lahore+Pakistan"
+                            target="_blank">📍 123 Food Street, Lahore, Pakistan</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container text-center border-t pt-4 mt-6">
+            <p>&copy; 2026 BBQ 4 You. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

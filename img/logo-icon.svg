@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="130" viewBox="0 0 100 130">
+    <defs>
+        <style>
+            .cutlery-fill { fill: #ea580c; }
+        </style>
+    </defs>
+        <!-- Icon: Solid Silhouette Crossed Fork and Knife -->
+        <g transform="translate(50, 65) scale(1.25)">
+            <g transform="rotate(-40)">
+                <!-- Fork -->
+                <rect x="-14" y="-40" width="5" height="24" rx="2.5" fill="#ea580c" />
+                <rect x="-5" y="-40" width="5" height="24" rx="2.5" fill="#ea580c" />
+                <rect x="4" y="-40" width="5" height="24" rx="2.5" fill="#ea580c" />
+                <rect x="13" y="-40" width="5" height="24" rx="2.5" fill="#ea580c" />
+                <path d="M -14 -22 V -14 C -14 4 18 4 18 -14 V -22 Z" fill="#ea580c" />
+                <rect x="-3" y="-5" width="10" height="48" rx="5" fill="#ea580c" />
+            </g>
+            <g transform="rotate(40)">
+                <!-- Knife -->
+                <path d="M -3 -42 C 22 -42 22 -8 8 2 C 2 6 -3 6 -3 2 Z" fill="#ea580c" />
+                <rect x="-3" y="-2" width="10" height="45" rx="5" fill="#ea580c" />
+            </g>
+        </g>
+</svg>
