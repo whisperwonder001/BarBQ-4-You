@@ -270,53 +270,62 @@ h4,
     gap: 0.6rem;
 }
 
-.brand-icon {
-    width: 40px;
-    height: 40px;
-    color: var(--clr-primary);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+.brand-img {
+    height: 45px;
+    width: auto;
     transition: var(--transition);
 }
 
-.brand-text-wrap {
-    display: flex;
-    flex-direction: column;
+.logo-dark {
+    display: none;
 }
 
-.logo-text {
-    font-size: 1.6rem;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-    /* Default transparent hero */
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
-    line-height: 1;
+/* Light Theme & Transparent Navbar -> White Logo */
+/* Light Theme & Scrolled Navbar -> Dark Logo */
+.navbar:not(.scrolled) .logo-white {
+    display: block;
 }
 
-.navbar.scrolled .logo-text {
-    color: var(--clr-nav-text) !important;
-    text-shadow: none !important;
+.navbar:not(.scrolled) .logo-dark {
+    display: none;
 }
 
-.stylish-4 {
-    color: var(--clr-primary);
-    font-size: 2.4rem;
-    font-style: italic;
-    line-height: 0.7;
+.navbar.scrolled .logo-white {
+    display: none;
 }
 
-.tagline {
-    font-size: 0.75rem;
-    color: #e2e8f0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 500;
+.navbar.scrolled .logo-dark {
+    display: block;
 }
 
-.navbar.scrolled .tagline {
-    color: var(--clr-text-muted);
+/* Dark Theme -> Always White Logo (since backgrounds are dark) */
+[data-theme="dark"] .logo-white {
+    display: block !important;
+}
+
+[data-theme="dark"] .logo-dark {
+    display: none !important;
+}
+
+/* Footer Logos */
+.footer .logo-white {
+    display: block;
+}
+
+.footer .logo-dark {
+    display: none;
+}
+
+[data-theme="light"] .footer .logo-white {
+    display: none;
+}
+
+[data-theme="light"] .footer .logo-dark {
+    display: block;
+}
+
+.brand:hover .brand-img {
+    transform: scale(1.05);
 }
 
 /* Controls */
@@ -570,24 +579,6 @@ h4,
     color: var(--clr-text-main);
 }
 
-.brand-icon {
-    width: 44px;
-    height: 44px;
-    transition: transform 0.3s ease;
-}
-
-.brand-icon .cutlery {
-    fill: #111111;
-    transition: fill 0.3s ease;
-}
-
-[data-theme="dark"] .brand-icon .cutlery {
-    fill: #ffffff;
-}
-
-.brand:hover .brand-icon {
-    transform: scale(1.05);
-}
 
 .about-image-wrapper {
     position: relative;
@@ -867,13 +858,6 @@ h4,
     transition: var(--transition);
 }
 
-.footer .logo-text {
-    color: var(--clr-footer-heading);
-}
-
-.footer .tagline {
-    color: var(--clr-footer-text);
-}
 
 .footer-grid {
     display: grid;
