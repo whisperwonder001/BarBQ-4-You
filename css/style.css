@@ -271,9 +271,17 @@ h4,
 }
 
 .brand-img {
-    height: 45px;
+    height: 80px;
     width: auto;
     transition: var(--transition);
+}
+
+.navbar.scrolled .brand-img {
+    height: 65px;
+}
+
+.footer .brand-img {
+    height: 100px;
 }
 
 .logo-dark {
