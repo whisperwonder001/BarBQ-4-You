@@ -229,23 +229,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const menuItems = {
             catering: [
-                { en: "Authentic Chicken Biryani", ur: "مستند چکن بریانی" },
-                { en: "Peshawari Mutton Karahi", ur: "پشاوری مٹن کڑاہی" },
-                { en: "Live BBQ Platter", ur: "لائیو باربی کیو پلیٹر" },
-                { en: "Shahi Beef Qorma", ur: "شاہی بیف قورمہ" },
-                { en: "Assorted Naan & Roti", ur: "نان اور روٹی" },
-                { en: "Salads & Raita Station", ur: "سلاد اور رائتہ" },
-                { en: "Traditional Drinks & Kashmiri Chai", ur: "مشروبات اور کشمیری چائے" }
+                { en: "Authentic Chicken Biryani (KG)", ur: "مستند چکن بریانی (کلو)" },
+                { en: "Peshawari Mutton Karahi (KG)", ur: "پشاوری مٹن کڑاہی (کلو)" },
+                { en: "Live BBQ Platter (Person)", ur: "لائیو باربی کیو پلیٹر (فی کس)" },
+                { en: "Shahi Beef Qorma (KG)", ur: "شاہی بیف قورمہ (کلو)" },
+                { en: "Assorted Naan & Roti (Piece)", ur: "نان اور روٹی (عدد)" },
+                { en: "Salads & Raita Station (Bowl)", ur: "سلاد اور رائتہ (پیالہ)" },
+                { en: "Traditional Drinks & Kashmiri Chai (Liter)", ur: "مشروبات اور کشمیری چائے (لیٹر)" }
             ],
             frozen: [
-                { en: "Beef Shami Kabab", ur: "بیف شامی کباب" },
-                { en: "Chicken Samosas", ur: "چکن سموسے" },
-                { en: "Vegetable Spring Rolls", ur: "ویجیٹیبل اسپرنگ رولز" },
-                { en: "Peshawari Chapli Kabab", ur: "پشاوری چپلی کباب" },
-                { en: "Punjabi Aloo Samosa", ur: "پنجابی آلو سموسہ" },
-                { en: "Half-Cooked Seekh Kabab", ur: "ہاف ککڈ سیخ کباب" },
-                { en: "Classic Lacha Paratha", ur: "کلاسک لچھا پراٹھا" },
-                { en: "Marinated Tikka Boti", ur: "میرینیٹڈ چکن تکہ بوٹی" }
+                { en: "Beef Shami Kabab (Dozen)", ur: "بیف شامی کباب (درجن)" },
+                { en: "Chicken Samosas (Dozen)", ur: "چکن سموسے (درجن)" },
+                { en: "Vegetable Spring Rolls (Dozen)", ur: "ویجیٹیبل اسپرنگ رولز (درجن)" },
+                { en: "Peshawari Chapli Kabab (KG)", ur: "پشاوری چپلی کباب (کلو)" },
+                { en: "Punjabi Aloo Samosa (Dozen)", ur: "پنجابی آلو سموسہ (درجن)" },
+                { en: "Half-Cooked Seekh Kabab (KG)", ur: "ہاف ککڈ سیخ کباب (کلو)" },
+                { en: "Classic Lacha Paratha (Pack of 10)", ur: "کلاسک لچھا پراٹھا (پیک 10 عدد)" },
+                { en: "Marinated Tikka Boti (KG)", ur: "میرینیٹڈ چکن تکہ بوٹی (کلو)" }
             ]
         };
 
@@ -260,6 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedItems.length > 0) {
             dynamicItemsSection.style.display = 'block';
             updateAddedItemsUI();
+
+            // Auto-select 'both' so the dropdown populates items correctly
+            setTimeout(() => {
+                orderType.value = 'both';
+                orderType.dispatchEvent(new Event('change'));
+            }, 0);
         }
 
         orderType.addEventListener('change', (e) => {
