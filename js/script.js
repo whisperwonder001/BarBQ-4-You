@@ -213,7 +213,18 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         };
 
-        let selectedItems = [];
+
+        let selectedItems = cart.length > 0 ? cart.map(item => ({
+            en: item.nameEn,
+            ur: item.nameUr,
+            qty: item.qty,
+            unit: 'Unit'
+        })) : [];
+
+        if (selectedItems.length > 0) {
+            dynamicItemsSection.style.display = 'block';
+            updateAddedItemsUI();
+        }
 
         orderType.addEventListener('change', (e) => {
             const val = e.target.value;
@@ -369,4 +380,159 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    /* --- Global Cart Logic --- */
+    let cart = JSON.parse(localStorage.getItem('bbq-cart')) || [];
+
+    const updateCartBadge = () => {
+        const badges = document.querySelectorAll('#cart-count-badge');
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        badges.forEach(badge => {
+            badge.textContent = totalItems;
+            badge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+        });
+    };
+
+    const saveCart = () => {
+        localStorage.setItem('bbq-cart', JSON.stringify(cart));
+        updateCartBadge();
+    };
+
+    const showToast = (message) => {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        container.appendChild(toast);
+
+        // Animate in
+        setTimeout(() => toast.classList.add('show'), 100);
+
+        // Remove after 3s
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    };
+
+    // Add to Cart Buttons logic (for index.html)
+    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = {
+                nameEn: btn.dataset.nameEn,
+                nameUr: btn.dataset.nameUr,
+                price: parseInt(btn.dataset.price),
+                img: btn.dataset.img,
+                qty: 1
+            };
+
+            const existing = cart.find(i => i.nameEn === item.nameEn);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push(item);
+            }
+
+            saveCart();
+            const currentLang = localStorage.getItem('lang') || 'en';
+            const msg = currentLang === 'ur' ? 'آئٹم کارٹ میں شامل کر دیا گیا!' : 'Item added to cart!';
+            showToast(msg);
+        });
+    });
+
+    // Cart Page Rendering (for cart.html)
+    const cartItemsWrapper = document.getElementById('cart-items-wrapper');
+    const cartSummary = document.getElementById('cart-summary');
+    const totalQtyEl = document.getElementById('total-qty');
+    const emptyMsg = document.getElementById('empty-cart-msg');
+
+    const renderCart = () => {
+        if (!cartItemsWrapper) return;
+
+        cartItemsWrapper.innerHTML = '';
+        const currentLang = localStorage.getItem('lang') || 'en';
+
+        if (cart.length === 0) {
+            emptyMsg.style.display = 'block';
+            cartSummary.style.display = 'none';
+            return;
+        }
+
+        emptyMsg.style.display = 'none';
+        cartSummary.style.display = 'block';
+
+        let totalQty = 0;
+
+        cart.forEach((item, index) => {
+            totalQty += item.qty;
+
+            const card = document.createElement('div');
+            card.className = 'cart-item-card';
+
+            card.innerHTML = `
+                <img src="${item.img}" alt="${item.nameEn}" class="cart-item-thumb">
+                <div class="cart-item-info">
+                    <h4 data-en="${item.nameEn}" data-ur="${item.nameUr}">${currentLang === 'ur' ? item.nameUr : item.nameEn}</h4>
+                    <p>Rs ${item.price.toLocaleString()} / Unit</p>
+                </div>
+                <div class="cart-item-actions">
+                    <div class="qty-control">
+                        <button class="qty-btn minus" data-index="${index}">-</button>
+                        <span>${item.qty}</span>
+                        <button class="qty-btn plus" data-index="${index}">+</button>
+                    </div>
+                    <button class="remove-item-btn" data-index="${index}">🗑️</button>
+                </div>
+            `;
+            cartItemsWrapper.appendChild(card);
+        });
+
+        totalQtyEl.textContent = totalQty;
+
+        // Button Listeners
+        document.querySelectorAll('.qty-btn.plus').forEach(btn => {
+            btn.addEventListener('click', () => {
+                cart[btn.dataset.index].qty++;
+                saveCart();
+                renderCart();
+            });
+        });
+
+        document.querySelectorAll('.qty-btn.minus').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = btn.dataset.index;
+                if (cart[idx].qty > 1) {
+                    cart[idx].qty--;
+                } else {
+                    cart.splice(idx, 1);
+                }
+                saveCart();
+                renderCart();
+            });
+        });
+
+        document.querySelectorAll('.remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                cart.splice(btn.dataset.index, 1);
+                saveCart();
+                renderCart();
+            });
+        });
+    };
+
+    const clearCartBtn = document.getElementById('clear-cart-btn');
+    if (clearCartBtn) {
+        clearCartBtn.addEventListener('click', () => {
+            cart = [];
+            saveCart();
+            renderCart();
+        });
+    }
+
+    // Initialize
+    updateCartBadge();
+    renderCart();
 });

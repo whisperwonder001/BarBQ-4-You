@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BBQ 4 You - Your Shopping Cart. Review your delicious selections.">
+    <title data-en="Your Cart | BBQ 4 You" data-ur="آپ کا کارٹ | باربی کیو 4 یو">Your Cart | BBQ 4 You</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="cart-page">
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand">
+                <img src="img/logo-white.png" alt="BBQ 4 You" class="brand-img logo-white">
+                <img src="img/logo-dark.png" alt="BBQ 4 You" class="brand-img logo-dark">
+            </a>
+
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-controls">
+                <ul class="nav-links">
+                    <li><a href="index.html#home" data-en="Home" data-ur="ہوم" style="color: var(--clr-nav-text);">Home</a></li>
+                    <li><a href="index.html#about" data-en="About" data-ur="ہمارے بارے میں" style="color: var(--clr-nav-text);">About</a></li>
+                    <li><a href="index.html#catering" data-en="Catering" data-ur="کیٹرنگ مینو" style="color: var(--clr-nav-text);">Catering</a></li>
+                    <li><a href="index.html#frozen-menu" data-en="Frozen" data-ur="فروزن فوڈز" style="color: var(--clr-nav-text);">Frozen</a></li>
+                    <li><a href="cart.html" class="active" data-en="Cart" data-ur="کارٹ" style="color: var(--clr-nav-text);">Cart <span id="cart-count-badge" class="badge-count">0</span></a></li>
+                    <li><a href="order.html" class="btn btn-primary" data-en="Checkout" data-ur="چیک آؤٹ" style="margin-top:0;">Checkout</a></li>
+                </ul>
+
+                <div class="utils">
+                    <button class="lang-btn active" data-lang="en" style="color: var(--clr-text-muted);">EN</button>
+                    <button class="lang-btn" data-lang="ur" style="color: var(--clr-text-muted);">اردو</button>
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode" style="color: var(--clr-nav-text);">
+                        <span>🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Content Section -->
+    <section class="section-padding" style="margin-top: 80px; min-height: 70vh;">
+        <div class="container text-center">
+            <span class="subtitle" data-en="Review Your Items" data-ur="اپنے آئٹمز کا جائزہ لیں">Review Your Items</span>
+            <h1 class="section-title" data-en="Your Shopping Cart" data-ur="آپ کا شاپنگ کارٹ">Your Shopping Cart</h1>
+        </div>
+
+        <div class="container cart-container mt-8">
+            <div id="cart-items-wrapper" class="cart-items-list">
+                <!-- Cart items will be injected here by JS -->
+                <div class="empty-cart-msg" id="empty-cart-msg">
+                    <p data-en="Your cart is currently empty." data-ur="آپ کا کارٹ اس وقت خالی ہے۔">Your cart is currently empty.</p>
+                    <a href="index.html#catering" class="btn btn-outline mt-4" data-en="Browse Menu" data-ur="مینو دیکھیں">Browse Menu</a>
+                </div>
+            </div>
+
+            <div id="cart-summary" class="cart-summary-card" style="display: none;">
+                <h3 data-en="Order Summary" data-ur="آرڈر کی تفصیل">Order Summary</h3>
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span data-en="Total Items" data-ur="کل آئٹمز">Total Items</span>
+                        <span id="total-qty">0</span>
+                    </div>
+                </div>
+                <div class="summary-actions mt-6">
+                    <a href="order.html" class="btn btn-primary btn-block" data-en="Proceed to Checkout" data-ur="چیک آؤٹ پر جائیں">Proceed to Checkout</a>
+                    <button id="clear-cart-btn" class="btn btn-outline btn-block mt-4" data-en="Clear Cart" data-ur="کارٹ خالی کریں">Clear Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <img src="img/logo-white.png" alt="BBQ 4 You" class="brand-img logo-white">
+                    <img src="img/logo-dark.png" alt="BBQ 4 You" class="brand-img logo-dark">
+                </div>
+                <p data-en="Delivering authentic Pakistani flavors with premium quality and unmatched service."
+                    data-ur="پریمیم کوالٹی کے ساتھ مستند پاکستانی ذائقے۔">
+                    Delivering authentic Pakistani flavors with
+                    premium quality and unmatched service.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3 data-en="Quick Links" data-ur="اہم لنکس">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#home" data-en="Home" data-ur="ہوم">Home</a></li>
+                    <li><a href="index.html#about" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a></li>
+                    <li><a href="index.html#frozen-menu" data-en="Frozen Menu" data-ur="فروزن مینو">Frozen Menu</a></li>
+                    <li><a href="index.html#catering" data-en="Catering & Events" data-ur="کیٹرنگ اور ایونٹس">Catering &
+                            Events</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3 data-en="Contact Info" data-ur="رابطہ کی معلومات">Contact Info</h3>
+                <ul>
+                    <li><a href="https://wa.me/923000000000" target="_blank">📞 +92 300 000 0000</a></li>
+                    <li><a href="index.html#contact-form">✉️ info@bbq4you.pk</a></li>
+                    <li><a href="https://www.google.com/maps/search/?api=1&query=123+Food+Street+Lahore+Pakistan"
+                            target="_blank">📍 123 Food Street, Lahore, Pakistan</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container text-center border-t pt-4 mt-6">
+            <p>&copy; 2026 BBQ 4 You. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
