@@ -1,5 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* --- Global Cart Logic --- */
+    let cart = JSON.parse(localStorage.getItem('bbq-cart')) || [];
+
+    const updateCartBadge = () => {
+        const badges = document.querySelectorAll('#cart-count-badge');
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        badges.forEach(badge => {
+            badge.textContent = totalItems;
+            badge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+        });
+    };
+
+    const saveCart = () => {
+        localStorage.setItem('bbq-cart', JSON.stringify(cart));
+        updateCartBadge();
+    };
+
+    const showToast = (message) => {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        container.appendChild(toast);
+
+        setTimeout(() => toast.classList.add('show'), 100);
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    };
+
+    // Initialize Badge immediately before anything else
+    updateCartBadge();
+
     /* --- Theme Toggle --- */
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = themeToggle.querySelector('span');
@@ -218,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             en: item.nameEn,
             ur: item.nameUr,
             qty: item.qty,
-            unit: 'Unit'
+            unit: item.unit || 'Unit'
         })) : [];
 
         if (selectedItems.length > 0) {
@@ -381,42 +417,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* --- Global Cart Logic --- */
-    let cart = JSON.parse(localStorage.getItem('bbq-cart')) || [];
-
-    const updateCartBadge = () => {
-        const badges = document.querySelectorAll('#cart-count-badge');
-        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-        badges.forEach(badge => {
-            badge.textContent = totalItems;
-            badge.style.display = totalItems > 0 ? 'inline-block' : 'none';
-        });
-    };
-
-    const saveCart = () => {
-        localStorage.setItem('bbq-cart', JSON.stringify(cart));
-        updateCartBadge();
-    };
-
-    const showToast = (message) => {
-        const container = document.getElementById('toast-container');
-        if (!container) return;
-
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.textContent = message;
-        container.appendChild(toast);
-
-        // Animate in
-        setTimeout(() => toast.classList.add('show'), 100);
-
-        // Remove after 3s
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 400);
-        }, 3000);
-    };
-
     // Add to Cart Buttons logic (for index.html)
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
     addToCartBtns.forEach(btn => {
@@ -425,6 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nameEn: btn.dataset.nameEn,
                 nameUr: btn.dataset.nameUr,
                 price: parseInt(btn.dataset.price),
+                unit: btn.dataset.unit || 'Unit',
                 img: btn.dataset.img,
                 qty: 1
             };
@@ -479,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${item.img}" alt="${item.nameEn}" class="cart-item-thumb">
                 <div class="cart-item-info">
                     <h4 data-en="${item.nameEn}" data-ur="${item.nameUr}">${currentLang === 'ur' ? item.nameUr : item.nameEn}</h4>
-                    <p>Rs ${item.price.toLocaleString()} / Unit</p>
+                    <p>Rs ${item.price.toLocaleString()} / ${item.unit || 'Unit'}</p>
                     <p><strong>Subtotal: Rs ${(item.price * item.qty).toLocaleString()}</strong></p>
                 </div>
                 <div class="cart-item-actions">
@@ -557,7 +558,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize
     updateCartBadge();
     renderCart();
 });
