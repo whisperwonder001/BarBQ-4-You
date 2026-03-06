@@ -79,13 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- Mobile Menu Toggle --- */
     const mobileToggle = document.querySelector('.mobile-toggle');
+    const navControls = document.querySelector('.nav-controls');
     const navLinks = document.querySelector('.nav-links');
 
-    if (mobileToggle) {
+    if (mobileToggle && navControls) {
         mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            navControls.classList.toggle('active');
             const bars = mobileToggle.querySelectorAll('.bar');
-            if (navLinks.classList.contains('active')) {
+            if (navControls.classList.contains('active')) {
                 bars[0].style.transform = 'translateY(8px) rotate(45deg)';
                 bars[1].style.opacity = '0';
                 bars[2].style.transform = 'translateY(-8px) rotate(-45deg)';
@@ -100,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => {
         link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
+            if (navControls && navControls.classList.contains('active')) {
+                navControls.classList.remove('active');
                 const bars = mobileToggle.querySelectorAll('.bar');
                 bars[0].style.transform = 'none';
                 bars[1].style.opacity = '1';
