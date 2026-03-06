@@ -449,6 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalQtyEl = document.getElementById('total-qty');
     const emptyMsg = document.getElementById('empty-cart-msg');
 
+
     const renderCart = () => {
         if (!cartItemsWrapper) return;
 
@@ -465,9 +466,11 @@ document.addEventListener('DOMContentLoaded', () => {
         cartSummary.style.display = 'block';
 
         let totalQty = 0;
+        let totalPrice = 0;
 
         cart.forEach((item, index) => {
             totalQty += item.qty;
+            totalPrice += (item.price * item.qty);
 
             const card = document.createElement('div');
             card.className = 'cart-item-card';
@@ -477,6 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="cart-item-info">
                     <h4 data-en="${item.nameEn}" data-ur="${item.nameUr}">${currentLang === 'ur' ? item.nameUr : item.nameEn}</h4>
                     <p>Rs ${item.price.toLocaleString()} / Unit</p>
+                    <p><strong>Subtotal: Rs ${(item.price * item.qty).toLocaleString()}</strong></p>
                 </div>
                 <div class="cart-item-actions">
                     <div class="qty-control">
@@ -492,10 +496,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         totalQtyEl.textContent = totalQty;
 
+        // Add Total Price to summary if element exists
+        const summaryDetails = cartSummary.querySelector('.summary-details');
+        if (summaryDetails) {
+            summaryDetails.innerHTML = `
+                <div class="summary-row">
+                    <span data-en="Total Items" data-ur="کل آئٹمز">${currentLang === 'ur' ? 'کل آئٹمز' : 'Total Items'}</span>
+                    <span>${totalQty}</span>
+                </div>
+                <div class="summary-row" style="font-size: 1.2rem; font-weight: 800; border-top: 1px solid var(--clr-border); padding-top: 1rem; margin-top: 1rem;">
+                    <span data-en="Total Amount" data-ur="کل رقم">${currentLang === 'ur' ? 'کل رقم' : 'Total Amount'}</span>
+                    <span>Rs ${totalPrice.toLocaleString()}</span>
+                </div>
+            `;
+        }
+
         // Button Listeners
         document.querySelectorAll('.qty-btn.plus').forEach(btn => {
             btn.addEventListener('click', () => {
-                cart[btn.dataset.index].qty++;
+                const idx = btn.dataset.index;
+                cart[idx].qty++;
                 saveCart();
                 renderCart();
             });
@@ -521,6 +541,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderCart();
             });
         });
+
+        // Proactively update scroll-reveal elements
+        if (typeof observer !== 'undefined') {
+            document.querySelectorAll('.cart-item-card').forEach(el => observer.observe(el));
+        }
     };
 
     const clearCartBtn = document.getElementById('clear-cart-btn');
