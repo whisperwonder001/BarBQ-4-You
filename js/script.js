@@ -266,6 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 orderType.value = 'both';
                 orderType.dispatchEvent(new Event('change'));
             }, 0);
+        } else {
+            dynamicItemsSection.style.display = 'block';
+            setTimeout(() => {
+                orderType.value = 'both';
+                orderType.dispatchEvent(new Event('change'));
+            }, 0);
         }
 
         orderType.addEventListener('change', (e) => {
@@ -486,7 +492,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${item.img}" alt="${item.nameEn}" class="cart-item-thumb">
                 <div class="cart-item-info">
                     <h4 data-en="${item.nameEn}" data-ur="${item.nameUr}">${currentLang === 'ur' ? item.nameUr : item.nameEn}</h4>
-                    <p>Rs ${item.price.toLocaleString()} / ${item.unit || 'Unit'}</p>
+                    <p style="display: flex; align-items: center; gap: 0.5rem;">Rs ${item.price.toLocaleString()} / 
+                        <select class="cart-unit-select" data-index="${index}" style="padding: 2px 5px; font-size: 0.85rem; border: 1px solid var(--clr-border); border-radius: 4px; background: var(--clr-bg-main); color: var(--clr-text-main);">
+                            <option value="KG" ${item.unit === 'KG' ? 'selected' : ''}>KG</option>
+                            <option value="Dozen" ${item.unit === 'Dozen' ? 'selected' : ''}>Dozen</option>
+                            <option value="Pack" ${item.unit === 'Pack' ? 'selected' : ''}>Pack</option>
+                            <option value="Persons" ${item.unit === 'Persons' ? 'selected' : ''}>Persons</option>
+                            <option value="Pieces" ${item.unit === 'Pieces' ? 'selected' : ''}>Pieces</option>
+                            <option value="Bowl" ${item.unit === 'Bowl' ? 'selected' : ''}>Bowl</option>
+                            <option value="Liter" ${item.unit === 'Liter' ? 'selected' : ''}>Liter</option>
+                            <option value="Unit" ${item.unit === 'Unit' ? 'selected' : ''}>Unit</option>
+                        </select>
+                    </p>
                     <p><strong>Subtotal: Rs ${(item.price * item.qty).toLocaleString()}</strong></p>
                 </div>
                 <div class="cart-item-actions">
@@ -546,6 +563,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 cart.splice(btn.dataset.index, 1);
                 saveCart();
                 renderCart();
+            });
+        });
+
+        document.querySelectorAll('.cart-unit-select').forEach(sel => {
+            sel.addEventListener('change', (e) => {
+                const idx = e.target.dataset.index;
+                cart[idx].unit = e.target.value;
+                saveCart();
+                // Optionally re-render cart here entirely, or just let it update unit silently
             });
         });
 
