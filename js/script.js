@@ -257,17 +257,99 @@ document.addEventListener('DOMContentLoaded', () => {
             unit: item.unit || 'Unit'
         })) : [];
 
+        // Function to update the visual list and hidden input
+        const updateAddedItemsUI = () => {
+            itemsUl.innerHTML = '';
+            const currentLang = localStorage.getItem('lang') || 'en';
+
+            if (selectedItems.length === 0) {
+                noItemsMsg.style.display = 'block';
+                detailsInput.value = '';
+            } else {
+                noItemsMsg.style.display = 'none';
+                let detailsStr = '';
+
+                selectedItems.forEach((item, idx) => {
+                    detailsStr += `${item.qty} ${item.unit} of ${item.en}\n`;
+
+                    const li = document.createElement('li');
+                    li.style.display = 'flex';
+                    li.style.justifyContent = 'space-between';
+                    li.style.alignItems = 'center';
+                    li.style.background = 'var(--clr-bg-card)';
+                    li.style.padding = '0.5rem 1rem';
+                    li.style.borderRadius = '8px';
+                    li.style.border = '1px solid var(--clr-border)';
+
+                    const infoDiv = document.createElement('div');
+                    infoDiv.style.display = 'flex';
+                    infoDiv.style.flexDirection = 'column';
+                    infoDiv.style.gap = '0.2rem';
+
+                    const textSpan = document.createElement('span');
+                    textSpan.dataset.en = `${item.qty} - ${item.en}`;
+                    textSpan.dataset.ur = `${item.qty} - ${item.ur}`;
+                    textSpan.textContent = `${item.qty} - ${item[currentLang]}`;
+
+                    const dropdownSpan = document.createElement('span');
+                    dropdownSpan.innerHTML = `
+                        <select class="order-item-unit" data-index="${idx}" style="padding: 2px; font-size: 0.8rem; border: 1px solid var(--clr-border); border-radius: 4px; background: var(--clr-bg-main); color: var(--clr-text-main); margin-top: 5px;">
+                            <option value="KG" ${item.unit === 'KG' ? 'selected' : ''}>KG</option>
+                            <option value="Dozen" ${item.unit === 'Dozen' ? 'selected' : ''}>Dozen</option>
+                            <option value="Pack" ${item.unit === 'Pack' ? 'selected' : ''}>Pack</option>
+                            <option value="Persons" ${item.unit === 'Persons' ? 'selected' : ''}>Persons</option>
+                            <option value="Pieces" ${item.unit === 'Pieces' ? 'selected' : ''}>Pieces</option>
+                            <option value="Bowl" ${item.unit === 'Bowl' ? 'selected' : ''}>Bowl</option>
+                            <option value="Liter" ${item.unit === 'Liter' ? 'selected' : ''}>Liter</option>
+                            <option value="Unit" ${item.unit === 'Unit' ? 'selected' : ''}>Unit</option>
+                        </select>
+                    `;
+
+                    infoDiv.appendChild(textSpan);
+                    infoDiv.appendChild(dropdownSpan);
+
+                    const rmBtn = document.createElement('button');
+                    rmBtn.innerHTML = '×';
+                    rmBtn.style.background = '#ef4444';
+                    rmBtn.style.color = '#fff';
+                    rmBtn.style.border = 'none';
+                    rmBtn.style.borderRadius = '50%';
+                    rmBtn.style.width = '24px';
+                    rmBtn.style.height = '24px';
+                    rmBtn.style.cursor = 'pointer';
+                    rmBtn.style.display = 'flex';
+                    rmBtn.style.alignItems = 'center';
+                    rmBtn.style.justifyContent = 'center';
+
+                    rmBtn.addEventListener('click', () => {
+                        selectedItems.splice(idx, 1);
+                        updateAddedItemsUI();
+                    });
+
+                    li.appendChild(infoDiv);
+                    li.appendChild(rmBtn);
+                    itemsUl.appendChild(li);
+                });
+
+                detailsInput.value = detailsStr;
+                updateLanguage(currentLang);
+
+                // Add event listeners to the new dropdowns
+                document.querySelectorAll('.order-item-unit').forEach(sel => {
+                    sel.addEventListener('change', (e) => {
+                        const i = e.target.dataset.index;
+                        selectedItems[i].unit = e.target.value;
+                        updateAddedItemsUI();
+                    });
+                });
+            }
+        };
+
         if (selectedItems.length > 0) {
             dynamicItemsSection.style.display = 'block';
             updateAddedItemsUI();
 
             // Auto-select 'both' so the dropdown populates items correctly
-            setTimeout(() => {
-                orderType.value = 'both';
-                orderType.dispatchEvent(new Event('change'));
-            }, 0);
-        } else {
-            dynamicItemsSection.style.display = 'block';
             setTimeout(() => {
                 orderType.value = 'both';
                 orderType.dispatchEvent(new Event('change'));
@@ -302,64 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateLanguage(currentLang);
         });
 
-        // Function to update the visual list and hidden input
-        const updateAddedItemsUI = () => {
-            itemsUl.innerHTML = '';
-            const currentLang = localStorage.getItem('lang') || 'en';
-
-            if (selectedItems.length === 0) {
-                noItemsMsg.style.display = 'block';
-                detailsInput.value = '';
-            } else {
-                noItemsMsg.style.display = 'none';
-                let detailsStr = '';
-
-                selectedItems.forEach((item, idx) => {
-                    // Update hidden input string
-                    detailsStr += `${item.qty} ${item.unit} of ${item.en}\n`;
-
-                    // Create UI element
-                    const li = document.createElement('li');
-                    li.style.display = 'flex';
-                    li.style.justifyContent = 'space-between';
-                    li.style.alignItems = 'center';
-                    li.style.background = 'var(--clr-bg-card)';
-                    li.style.padding = '0.5rem 1rem';
-                    li.style.borderRadius = '8px';
-                    li.style.border = '1px solid var(--clr-border)';
-
-                    const textSpan = document.createElement('span');
-                    textSpan.dataset.en = `${item.qty} ${item.unit} - ${item.en}`;
-                    textSpan.dataset.ur = `${item.qty} ${item.unit} - ${item.ur}`;
-                    textSpan.textContent = `${item.qty} ${item.unit} - ${item[currentLang]}`;
-
-                    const rmBtn = document.createElement('button');
-                    rmBtn.innerHTML = '×';
-                    rmBtn.style.background = '#ef4444';
-                    rmBtn.style.color = '#fff';
-                    rmBtn.style.border = 'none';
-                    rmBtn.style.borderRadius = '50%';
-                    rmBtn.style.width = '24px';
-                    rmBtn.style.height = '24px';
-                    rmBtn.style.cursor = 'pointer';
-                    rmBtn.style.display = 'flex';
-                    rmBtn.style.alignItems = 'center';
-                    rmBtn.style.justifyContent = 'center';
-
-                    rmBtn.addEventListener('click', () => {
-                        selectedItems.splice(idx, 1);
-                        updateAddedItemsUI();
-                    });
-
-                    li.appendChild(textSpan);
-                    li.appendChild(rmBtn);
-                    itemsUl.appendChild(li);
-                });
-
-                detailsInput.value = detailsStr;
-                updateLanguage(currentLang); // Refresh translations in newly created spans
-            }
-        };
+        // updateAddedItemsUI moved up
 
         addItemBtn.addEventListener('click', () => {
             const selectedOpt = itemSelect.options[itemSelect.selectedIndex];
