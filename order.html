@@ -82,60 +82,29 @@
                 </div>
                 <div class="form-group" id="dynamicItemsSection"
                     style="border: 1px solid var(--clr-border); padding: 1.5rem; border-radius: 10px; background: rgba(0,0,0,0.02); margin-top: 1rem;">
-                    <h4 style="margin-bottom: 1rem; color: var(--clr-text-main);" data-en="Add Items to Your Order"
-                        data-ur="اپنے آرڈر میں آئٹمز شامل کریں">Add Items to Your Order</h4>
+                    <h4 style="margin-bottom: 1rem; color: var(--clr-text-main);" data-en="Order Summary"
+                        data-ur="آرڈر کی تفصیل">Order Summary</h4>
 
-                    <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem;">
-                        <div class="form-group">
-                            <label for="itemSelect" data-en="Select Item" data-ur="آئٹم منتخب کریں">Select Item</label>
-                            <select id="itemSelect">
-                                <option value="" disabled selected data-en="Choose an item..."
-                                    data-ur="ایک آئٹم منتخب کریں...">Choose an item...</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div
-                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; align-items: end;">
-                        <div class="form-group">
-                            <label for="unitSelect" data-en="Quantity Type (Unit)"
-                                data-ur="مقدار کی قسم (یونٹ)">Quantity Type (Unit)</label>
-                            <select id="unitSelect">
-                                <option value="KG" data-en="KG" data-ur="کلو گرام">KG</option>
-                                <option value="Dozen" data-en="Dozen" data-ur="درجن">Dozen</option>
-                                <option value="Pack" data-en="Pack" data-ur="پیکٹ">Pack</option>
-                                <option value="Persons" data-en="Persons / Plates" data-ur="افراد / پلیٹیں">Persons /
-                                    Plates</option>
-                                <option value="Pieces" data-en="Pieces" data-ur="عدد">Pieces</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="itemQty" data-en="Quantity Amount" data-ur="مقدار">Quantity Amount</label>
-                            <input type="number" id="itemQty" min="1" value="1">
-                        </div>
-                    </div>
-
-                    <button type="button" id="addItemBtn" class="btn btn-outline"
-                        style="background: var(--clr-bg-main); color: var(--clr-primary); border-color: var(--clr-primary); width: 100%; border-radius: 10px;"
-                        data-en="+ Add Item" data-ur="آئٹم شامل کریں">+ Add Item</button>
-
-                    <div id="addedItemsList" style="margin-top: 1.5rem; text-align: left;">
-                        <strong data-en="Your Selected Items:" data-ur="آپ کے منتخب کردہ آئٹمز:"
-                            style="color: var(--clr-primary);">Your Selected Items:</strong>
+                    <div id="addedItemsList" style="text-align: left;">
                         <ul id="itemsUl"
                             style="list-style: none; padding: 0; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
                         </ul>
                         <p id="noItemsMsg" style="color: var(--clr-text-muted); font-size: 0.9rem;"
-                            data-en="No items added yet." data-ur="ابھی تک کوئی آئٹم شامل نہیں کیا گیا۔">No items added
-                            yet.</p>
+                            data-en="No items in order." data-ur="اآرڈر میں کوئی آئٹم نہیں ہے۔">No items in order.</p>
 
                         <div id="orderTotalContainer"
-                            style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--clr-border); text-align: right;">
+                            style="display: block; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--clr-border); text-align: right;">
                             <strong style="color: var(--clr-text-main); font-size: 1.2rem;">
                                 <span data-en="Total Amount: " data-ur="کل رقم: ">Total Amount: </span>
                                 <span id="orderTotalAmount" style="color: var(--clr-primary);">Rs 0</span>
                             </strong>
                         </div>
+                    </div>
+
+                    <div
+                        style="margin-top: 1.5rem; padding: 1rem; border-radius: 8px; background: rgba(234, 88, 12, 0.1); color: var(--clr-primary); text-align: center; font-weight: 600;">
+                        <span data-en="Estimated Delivery Time: 2-3 Days" data-ur="متوقع ترسیل کا وقت: 2-3 دن">Estimated
+                            Delivery Time: 2-3 Days</span>
                     </div>
 
                     <!-- Hidden field to submit formatted items as part of the form string -->
