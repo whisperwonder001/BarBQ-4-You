@@ -105,8 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- Navbar Scroll Effect --- */
     const navbar = document.getElementById('navbar');
+    const isInnerPage = document.body.classList.contains('cart-page') || document.body.classList.contains('order-page');
+
+    if (isInnerPage) {
+        navbar.classList.add('scrolled');
+    }
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (isInnerPage || window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
@@ -229,23 +235,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const menuItems = {
             catering: [
-                { en: "Authentic Chicken Biryani (KG)", ur: "مستند چکن بریانی (کلو)" },
-                { en: "Peshawari Mutton Karahi (KG)", ur: "پشاوری مٹن کڑاہی (کلو)" },
-                { en: "Live BBQ Platter (Person)", ur: "لائیو باربی کیو پلیٹر (فی کس)" },
-                { en: "Shahi Beef Qorma (KG)", ur: "شاہی بیف قورمہ (کلو)" },
-                { en: "Assorted Naan & Roti (Piece)", ur: "نان اور روٹی (عدد)" },
-                { en: "Salads & Raita Station (Bowl)", ur: "سلاد اور رائتہ (پیالہ)" },
-                { en: "Traditional Drinks & Kashmiri Chai (Liter)", ur: "مشروبات اور کشمیری چائے (لیٹر)" }
+                { en: "Authentic Chicken Biryani (KG)", ur: "مستند چکن بریانی (کلو)", price: 800 },
+                { en: "Peshawari Mutton Karahi (KG)", ur: "پشاوری مٹن کڑاہی (کلو)", price: 1500 },
+                { en: "Live BBQ Platter (Person)", ur: "لائیو باربی کیو پلیٹر (فی کس)", price: 2500 },
+                { en: "Shahi Beef Qorma (KG)", ur: "شاہی بیف قورمہ (کلو)", price: 1200 },
+                { en: "Assorted Naan & Roti (Piece)", ur: "نان اور روٹی (عدد)", price: 50 },
+                { en: "Salads & Raita Station (Bowl)", ur: "سلاد اور رائتہ (پیالہ)", price: 350 },
+                { en: "Traditional Drinks & Kashmiri Chai (Liter)", ur: "مشروبات اور کشمیری چائے (لیٹر)", price: 250 }
             ],
             frozen: [
-                { en: "Beef Shami Kabab (Dozen)", ur: "بیف شامی کباب (درجن)" },
-                { en: "Chicken Samosas (Dozen)", ur: "چکن سموسے (درجن)" },
-                { en: "Vegetable Spring Rolls (Dozen)", ur: "ویجیٹیبل اسپرنگ رولز (درجن)" },
-                { en: "Peshawari Chapli Kabab (KG)", ur: "پشاوری چپلی کباب (کلو)" },
-                { en: "Punjabi Aloo Samosa (Dozen)", ur: "پنجابی آلو سموسہ (درجن)" },
-                { en: "Half-Cooked Seekh Kabab (KG)", ur: "ہاف ککڈ سیخ کباب (کلو)" },
-                { en: "Classic Lacha Paratha (Pack of 10)", ur: "کلاسک لچھا پراٹھا (پیک 10 عدد)" },
-                { en: "Marinated Tikka Boti (KG)", ur: "میرینیٹڈ چکن تکہ بوٹی (کلو)" }
+                { en: "Beef Shami Kabab (Dozen)", ur: "بیف شامی کباب (درجن)", price: 1200 },
+                { en: "Chicken Samosas (Dozen)", ur: "چکن سموسے (درجن)", price: 700 },
+                { en: "Vegetable Spring Rolls (Dozen)", ur: "ویجیٹیبل اسپرنگ رولز (درجن)", price: 800 },
+                { en: "Peshawari Chapli Kabab (KG)", ur: "پشاوری چپلی کباب (کلو)", price: 1400 },
+                { en: "Punjabi Aloo Samosa (Dozen)", ur: "پنجابی آلو سموسہ (درجن)", price: 400 },
+                { en: "Half-Cooked Seekh Kabab (KG)", ur: "ہاف ککڈ سیخ کباب (کلو)", price: 1500 },
+                { en: "Classic Lacha Paratha (Pack of 10)", ur: "کلاسک لچھا پراٹھا (پیک 10 عدد)", price: 450 },
+                { en: "Marinated Tikka Boti (KG)", ur: "میرینیٹڈ چکن تکہ بوٹی (کلو)", price: 1600 }
             ]
         };
 
@@ -254,23 +260,31 @@ document.addEventListener('DOMContentLoaded', () => {
             en: item.nameEn,
             ur: item.nameUr,
             qty: item.qty,
-            unit: item.unit || 'Unit'
+            unit: item.unit || 'Unit',
+            price: item.price || 0
         })) : [];
 
         // Function to update the visual list and hidden input
         const updateAddedItemsUI = () => {
             itemsUl.innerHTML = '';
             const currentLang = localStorage.getItem('lang') || 'en';
+            const orderTotalContainer = document.getElementById('orderTotalContainer');
+            const orderTotalAmount = document.getElementById('orderTotalAmount');
 
             if (selectedItems.length === 0) {
                 noItemsMsg.style.display = 'block';
                 detailsInput.value = '';
+                if (orderTotalContainer) orderTotalContainer.style.display = 'none';
             } else {
                 noItemsMsg.style.display = 'none';
+                if (orderTotalContainer) orderTotalContainer.style.display = 'block';
                 let detailsStr = '';
+                let totalAmount = 0;
 
                 selectedItems.forEach((item, idx) => {
-                    detailsStr += `${item.qty} ${item.unit} of ${item.en}\n`;
+                    const lineTotal = item.qty * (item.price || 0);
+                    totalAmount += lineTotal;
+                    detailsStr += `${item.qty} ${item.unit} of ${item.en} - Rs ${lineTotal}\n`;
 
                     const li = document.createElement('li');
                     li.style.display = 'flex';
@@ -287,9 +301,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     infoDiv.style.gap = '0.2rem';
 
                     const textSpan = document.createElement('span');
-                    textSpan.dataset.en = `${item.qty} - ${item.en}`;
-                    textSpan.dataset.ur = `${item.qty} - ${item.ur}`;
-                    textSpan.textContent = `${item.qty} - ${item[currentLang]}`;
+                    textSpan.dataset.en = `${item.qty} - ${item.en} (Rs ${item.price.toLocaleString()})`;
+                    textSpan.dataset.ur = `${item.qty} - ${item.ur} (Rs ${item.price.toLocaleString()})`;
+                    textSpan.textContent = `${item.qty} - ${item[currentLang]} (Rs ${item.price.toLocaleString()})`;
 
                     const dropdownSpan = document.createElement('span');
                     dropdownSpan.innerHTML = `
@@ -331,6 +345,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     itemsUl.appendChild(li);
                 });
 
+                if (orderTotalAmount) {
+                    orderTotalAmount.textContent = `Rs ${totalAmount.toLocaleString()}`;
+                }
+                detailsStr += `\nTotal: Rs ${totalAmount}`;
                 detailsInput.value = detailsStr;
                 updateLanguage(currentLang);
 
@@ -397,8 +415,9 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedItems.push({
                 en: itemObj.en,
                 ur: itemObj.ur,
-                qty: qty,
-                unit: unit
+                qty: parseFloat(qty),
+                unit: unit,
+                price: itemObj.price || 0
             });
 
             // Reset inputs
