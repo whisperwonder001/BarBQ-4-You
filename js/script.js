@@ -223,12 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --- Order Form Logic --- */
     const orderForm = document.getElementById('orderForm');
     if (orderForm) {
-        const orderType = document.getElementById('orderType');
         const dynamicItemsSection = document.getElementById('dynamicItemsSection');
-        const itemSelect = document.getElementById('itemSelect');
-        const unitSelect = document.getElementById('unitSelect');
-        const itemQty = document.getElementById('itemQty');
-        const addItemBtn = document.getElementById('addItemBtn');
         const itemsUl = document.getElementById('itemsUl');
         const noItemsMsg = document.getElementById('noItemsMsg');
         const detailsInput = document.getElementById('details');
@@ -364,82 +359,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         if (selectedItems.length > 0) {
-            dynamicItemsSection.style.display = 'block';
             updateAddedItemsUI();
-
-            // Auto-select 'both' so the dropdown populates items correctly
-            setTimeout(() => {
-                orderType.value = 'both';
-                orderType.dispatchEvent(new Event('change'));
-            }, 0);
         }
 
-        orderType.addEventListener('change', (e) => {
-            const val = e.target.value;
-            dynamicItemsSection.style.display = 'block';
-
-            // Clear current items
-            itemSelect.innerHTML = `<option value="" disabled selected data-en="Choose an item..." data-ur="ایک آئٹم منتخب کریں...">Choose an item...</option>`;
-
-            let itemsToDisplay = [];
-            if (val === 'catering') itemsToDisplay = menuItems.catering;
-            if (val === 'frozen') itemsToDisplay = menuItems.frozen;
-            if (val === 'both') itemsToDisplay = [...menuItems.catering, ...menuItems.frozen];
-
-            const currentLang = localStorage.getItem('lang') || 'en';
-
-            itemsToDisplay.forEach((item, index) => {
-                const opt = document.createElement('option');
-                opt.value = index; // using index or name, we'll store the object
-                opt.dataset.en = item.en;
-                opt.dataset.ur = item.ur;
-                opt.dataset.itemObj = JSON.stringify(item);
-                opt.textContent = item[currentLang];
-                itemSelect.appendChild(opt);
-            });
-
-            // Re-apply language to newly created options
-            updateLanguage(currentLang);
-        });
-
-        // updateAddedItemsUI moved up
-
-        addItemBtn.addEventListener('click', () => {
-            const selectedOpt = itemSelect.options[itemSelect.selectedIndex];
-            if (!selectedOpt.value) return alert('Please select an item first.');
-
-            const qty = itemQty.value;
-            const unit = unitSelect.value;
-            const itemObj = JSON.parse(selectedOpt.dataset.itemObj);
-
-            selectedItems.push({
-                en: itemObj.en,
-                ur: itemObj.ur,
-                qty: parseFloat(qty),
-                unit: unit,
-                price: itemObj.price || 0
-            });
-
-            // Reset inputs
-            itemSelect.selectedIndex = 0;
-            itemQty.value = 1;
-            unitSelect.selectedIndex = 0;
-
-            updateAddedItemsUI();
-        });
-
+        // Initial setup for items
         // Whenever language changes, we need to update our dynamic options text
         // We can hook into the click event of langBtns
         const langBtnsOrders = document.querySelectorAll('.lang-btn');
         langBtnsOrders.forEach(btn => {
             btn.addEventListener('click', () => {
                 const lang = btn.getAttribute('data-lang');
-                // Update select options text
-                Array.from(itemSelect.options).forEach(opt => {
-                    if (opt.dataset[lang]) {
-                        opt.textContent = opt.dataset[lang];
-                    }
-                });
                 // Update items list text via updateLanguage call in updateLanguage function globally.
                 // updateLanguage globally handles [data-en] etc.
             });
