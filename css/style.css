@@ -247,12 +247,12 @@ h4,
     color: var(--clr-primary);
 }
 
-.btn-whatsapp {
+.btn-WhatsApp {
     background-color: var(--clr-whatsapp);
     color: white !important;
 }
 
-.btn-whatsapp:hover {
+.btn-WhatsApp:hover {
     background-color: var(--clr-whatsapp-hover);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
