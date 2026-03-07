@@ -1,5 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* --- Global Cart Logic --- */
+    let cart = JSON.parse(localStorage.getItem('bbq-cart')) || [];
+
+    const updateCartBadge = () => {
+        const badges = document.querySelectorAll('#cart-count-badge');
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        badges.forEach(badge => {
+            badge.textContent = totalItems;
+            badge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+        });
+    };
+
+    const saveCart = () => {
+        localStorage.setItem('bbq-cart', JSON.stringify(cart));
+        updateCartBadge();
+    };
+
+    const showToast = (message) => {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        container.appendChild(toast);
+
+        setTimeout(() => toast.classList.add('show'), 100);
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    };
+
+    // Initialize Badge immediately before anything else
+    updateCartBadge();
+
     /* --- Theme Toggle --- */
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = themeToggle.querySelector('span');
@@ -193,27 +229,132 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const menuItems = {
             catering: [
-                { en: "Authentic Chicken Biryani", ur: "مستند چکن بریانی" },
-                { en: "Peshawari Mutton Karahi", ur: "پشاوری مٹن کڑاہی" },
-                { en: "Live BBQ Platter", ur: "لائیو باربی کیو پلیٹر" },
-                { en: "Shahi Beef Qorma", ur: "شاہی بیف قورمہ" },
-                { en: "Assorted Naan & Roti", ur: "نان اور روٹی" },
-                { en: "Salads & Raita Station", ur: "سلاد اور رائتہ" },
-                { en: "Traditional Drinks & Kashmiri Chai", ur: "مشروبات اور کشمیری چائے" }
+                { en: "Authentic Chicken Biryani (KG)", ur: "مستند چکن بریانی (کلو)" },
+                { en: "Peshawari Mutton Karahi (KG)", ur: "پشاوری مٹن کڑاہی (کلو)" },
+                { en: "Live BBQ Platter (Person)", ur: "لائیو باربی کیو پلیٹر (فی کس)" },
+                { en: "Shahi Beef Qorma (KG)", ur: "شاہی بیف قورمہ (کلو)" },
+                { en: "Assorted Naan & Roti (Piece)", ur: "نان اور روٹی (عدد)" },
+                { en: "Salads & Raita Station (Bowl)", ur: "سلاد اور رائتہ (پیالہ)" },
+                { en: "Traditional Drinks & Kashmiri Chai (Liter)", ur: "مشروبات اور کشمیری چائے (لیٹر)" }
             ],
             frozen: [
-                { en: "Beef Shami Kabab", ur: "بیف شامی کباب" },
-                { en: "Chicken Samosas", ur: "چکن سموسے" },
-                { en: "Vegetable Spring Rolls", ur: "ویجیٹیبل اسپرنگ رولز" },
-                { en: "Peshawari Chapli Kabab", ur: "پشاوری چپلی کباب" },
-                { en: "Punjabi Aloo Samosa", ur: "پنجابی آلو سموسہ" },
-                { en: "Half-Cooked Seekh Kabab", ur: "ہاف ککڈ سیخ کباب" },
-                { en: "Classic Lacha Paratha", ur: "کلاسک لچھا پراٹھا" },
-                { en: "Marinated Tikka Boti", ur: "میرینیٹڈ چکن تکہ بوٹی" }
+                { en: "Beef Shami Kabab (Dozen)", ur: "بیف شامی کباب (درجن)" },
+                { en: "Chicken Samosas (Dozen)", ur: "چکن سموسے (درجن)" },
+                { en: "Vegetable Spring Rolls (Dozen)", ur: "ویجیٹیبل اسپرنگ رولز (درجن)" },
+                { en: "Peshawari Chapli Kabab (KG)", ur: "پشاوری چپلی کباب (کلو)" },
+                { en: "Punjabi Aloo Samosa (Dozen)", ur: "پنجابی آلو سموسہ (درجن)" },
+                { en: "Half-Cooked Seekh Kabab (KG)", ur: "ہاف ککڈ سیخ کباب (کلو)" },
+                { en: "Classic Lacha Paratha (Pack of 10)", ur: "کلاسک لچھا پراٹھا (پیک 10 عدد)" },
+                { en: "Marinated Tikka Boti (KG)", ur: "میرینیٹڈ چکن تکہ بوٹی (کلو)" }
             ]
         };
 
-        let selectedItems = [];
+
+        let selectedItems = cart.length > 0 ? cart.map(item => ({
+            en: item.nameEn,
+            ur: item.nameUr,
+            qty: item.qty,
+            unit: item.unit || 'Unit'
+        })) : [];
+
+        // Function to update the visual list and hidden input
+        const updateAddedItemsUI = () => {
+            itemsUl.innerHTML = '';
+            const currentLang = localStorage.getItem('lang') || 'en';
+
+            if (selectedItems.length === 0) {
+                noItemsMsg.style.display = 'block';
+                detailsInput.value = '';
+            } else {
+                noItemsMsg.style.display = 'none';
+                let detailsStr = '';
+
+                selectedItems.forEach((item, idx) => {
+                    detailsStr += `${item.qty} ${item.unit} of ${item.en}\n`;
+
+                    const li = document.createElement('li');
+                    li.style.display = 'flex';
+                    li.style.justifyContent = 'space-between';
+                    li.style.alignItems = 'center';
+                    li.style.background = 'var(--clr-bg-card)';
+                    li.style.padding = '0.5rem 1rem';
+                    li.style.borderRadius = '8px';
+                    li.style.border = '1px solid var(--clr-border)';
+
+                    const infoDiv = document.createElement('div');
+                    infoDiv.style.display = 'flex';
+                    infoDiv.style.flexDirection = 'column';
+                    infoDiv.style.gap = '0.2rem';
+
+                    const textSpan = document.createElement('span');
+                    textSpan.dataset.en = `${item.qty} - ${item.en}`;
+                    textSpan.dataset.ur = `${item.qty} - ${item.ur}`;
+                    textSpan.textContent = `${item.qty} - ${item[currentLang]}`;
+
+                    const dropdownSpan = document.createElement('span');
+                    dropdownSpan.innerHTML = `
+                        <select class="order-item-unit" data-index="${idx}" style="padding: 2px; font-size: 0.8rem; border: 1px solid var(--clr-border); border-radius: 4px; background: var(--clr-bg-main); color: var(--clr-text-main); margin-top: 5px;">
+                            <option value="KG" ${item.unit === 'KG' ? 'selected' : ''}>KG</option>
+                            <option value="Dozen" ${item.unit === 'Dozen' ? 'selected' : ''}>Dozen</option>
+                            <option value="Pack" ${item.unit === 'Pack' ? 'selected' : ''}>Pack</option>
+                            <option value="Persons" ${item.unit === 'Persons' ? 'selected' : ''}>Persons</option>
+                            <option value="Pieces" ${item.unit === 'Pieces' ? 'selected' : ''}>Pieces</option>
+                            <option value="Bowl" ${item.unit === 'Bowl' ? 'selected' : ''}>Bowl</option>
+                            <option value="Liter" ${item.unit === 'Liter' ? 'selected' : ''}>Liter</option>
+                            <option value="Unit" ${item.unit === 'Unit' ? 'selected' : ''}>Unit</option>
+                        </select>
+                    `;
+
+                    infoDiv.appendChild(textSpan);
+                    infoDiv.appendChild(dropdownSpan);
+
+                    const rmBtn = document.createElement('button');
+                    rmBtn.innerHTML = '×';
+                    rmBtn.style.background = '#ef4444';
+                    rmBtn.style.color = '#fff';
+                    rmBtn.style.border = 'none';
+                    rmBtn.style.borderRadius = '50%';
+                    rmBtn.style.width = '24px';
+                    rmBtn.style.height = '24px';
+                    rmBtn.style.cursor = 'pointer';
+                    rmBtn.style.display = 'flex';
+                    rmBtn.style.alignItems = 'center';
+                    rmBtn.style.justifyContent = 'center';
+
+                    rmBtn.addEventListener('click', () => {
+                        selectedItems.splice(idx, 1);
+                        updateAddedItemsUI();
+                    });
+
+                    li.appendChild(infoDiv);
+                    li.appendChild(rmBtn);
+                    itemsUl.appendChild(li);
+                });
+
+                detailsInput.value = detailsStr;
+                updateLanguage(currentLang);
+
+                // Add event listeners to the new dropdowns
+                document.querySelectorAll('.order-item-unit').forEach(sel => {
+                    sel.addEventListener('change', (e) => {
+                        const i = e.target.dataset.index;
+                        selectedItems[i].unit = e.target.value;
+                        updateAddedItemsUI();
+                    });
+                });
+            }
+        };
+
+        if (selectedItems.length > 0) {
+            dynamicItemsSection.style.display = 'block';
+            updateAddedItemsUI();
+
+            // Auto-select 'both' so the dropdown populates items correctly
+            setTimeout(() => {
+                orderType.value = 'both';
+                orderType.dispatchEvent(new Event('change'));
+            }, 0);
+        }
 
         orderType.addEventListener('change', (e) => {
             const val = e.target.value;
@@ -243,64 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateLanguage(currentLang);
         });
 
-        // Function to update the visual list and hidden input
-        const updateAddedItemsUI = () => {
-            itemsUl.innerHTML = '';
-            const currentLang = localStorage.getItem('lang') || 'en';
-
-            if (selectedItems.length === 0) {
-                noItemsMsg.style.display = 'block';
-                detailsInput.value = '';
-            } else {
-                noItemsMsg.style.display = 'none';
-                let detailsStr = '';
-
-                selectedItems.forEach((item, idx) => {
-                    // Update hidden input string
-                    detailsStr += `${item.qty} ${item.unit} of ${item.en}\n`;
-
-                    // Create UI element
-                    const li = document.createElement('li');
-                    li.style.display = 'flex';
-                    li.style.justifyContent = 'space-between';
-                    li.style.alignItems = 'center';
-                    li.style.background = 'var(--clr-bg-card)';
-                    li.style.padding = '0.5rem 1rem';
-                    li.style.borderRadius = '8px';
-                    li.style.border = '1px solid var(--clr-border)';
-
-                    const textSpan = document.createElement('span');
-                    textSpan.dataset.en = `${item.qty} ${item.unit} - ${item.en}`;
-                    textSpan.dataset.ur = `${item.qty} ${item.unit} - ${item.ur}`;
-                    textSpan.textContent = `${item.qty} ${item.unit} - ${item[currentLang]}`;
-
-                    const rmBtn = document.createElement('button');
-                    rmBtn.innerHTML = '×';
-                    rmBtn.style.background = '#ef4444';
-                    rmBtn.style.color = '#fff';
-                    rmBtn.style.border = 'none';
-                    rmBtn.style.borderRadius = '50%';
-                    rmBtn.style.width = '24px';
-                    rmBtn.style.height = '24px';
-                    rmBtn.style.cursor = 'pointer';
-                    rmBtn.style.display = 'flex';
-                    rmBtn.style.alignItems = 'center';
-                    rmBtn.style.justifyContent = 'center';
-
-                    rmBtn.addEventListener('click', () => {
-                        selectedItems.splice(idx, 1);
-                        updateAddedItemsUI();
-                    });
-
-                    li.appendChild(textSpan);
-                    li.appendChild(rmBtn);
-                    itemsUl.appendChild(li);
-                });
-
-                detailsInput.value = detailsStr;
-                updateLanguage(currentLang); // Refresh translations in newly created spans
-            }
-        };
+        // updateAddedItemsUI moved up
 
         addItemBtn.addEventListener('click', () => {
             const selectedOpt = itemSelect.options[itemSelect.selectedIndex];
@@ -369,4 +453,168 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // Add to Cart Buttons logic (for index.html)
+    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = {
+                nameEn: btn.dataset.nameEn,
+                nameUr: btn.dataset.nameUr,
+                price: parseInt(btn.dataset.price),
+                unit: btn.dataset.unit || 'Unit',
+                img: btn.dataset.img,
+                qty: 1
+            };
+
+            const existing = cart.find(i => i.nameEn === item.nameEn);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push(item);
+            }
+
+            saveCart();
+            const currentLang = localStorage.getItem('lang') || 'en';
+            const msg = currentLang === 'ur' ? 'آئٹم کارٹ میں شامل کر دیا گیا!' : 'Item added to cart!';
+            showToast(msg);
+        });
+    });
+
+    // Cart Page Rendering (for cart.html)
+    const cartItemsWrapper = document.getElementById('cart-items-wrapper');
+    const cartSummary = document.getElementById('cart-summary');
+    const totalQtyEl = document.getElementById('total-qty');
+    const emptyMsg = document.getElementById('empty-cart-msg');
+
+
+    const renderCart = () => {
+        if (!cartItemsWrapper) return;
+
+        cartItemsWrapper.innerHTML = '';
+        const currentLang = localStorage.getItem('lang') || 'en';
+
+        if (cart.length === 0) {
+            emptyMsg.style.display = 'block';
+            cartSummary.style.display = 'none';
+            return;
+        }
+
+        emptyMsg.style.display = 'none';
+        cartSummary.style.display = 'block';
+
+        let totalQty = 0;
+        let totalPrice = 0;
+
+        cart.forEach((item, index) => {
+            totalQty += item.qty;
+            totalPrice += (item.price * item.qty);
+
+            const card = document.createElement('div');
+            card.className = 'cart-item-card';
+
+            card.innerHTML = `
+                <img src="${item.img}" alt="${item.nameEn}" class="cart-item-thumb">
+                <div class="cart-item-info">
+                    <h4 data-en="${item.nameEn}" data-ur="${item.nameUr}">${currentLang === 'ur' ? item.nameUr : item.nameEn}</h4>
+                    <p style="display: flex; align-items: center; gap: 0.5rem;">Rs ${item.price.toLocaleString()} / 
+                        <select class="cart-unit-select" data-index="${index}" style="padding: 2px 5px; font-size: 0.85rem; border: 1px solid var(--clr-border); border-radius: 4px; background: var(--clr-bg-main); color: var(--clr-text-main);">
+                            <option value="KG" ${item.unit === 'KG' ? 'selected' : ''}>KG</option>
+                            <option value="Dozen" ${item.unit === 'Dozen' ? 'selected' : ''}>Dozen</option>
+                            <option value="Pack" ${item.unit === 'Pack' ? 'selected' : ''}>Pack</option>
+                            <option value="Persons" ${item.unit === 'Persons' ? 'selected' : ''}>Persons</option>
+                            <option value="Pieces" ${item.unit === 'Pieces' ? 'selected' : ''}>Pieces</option>
+                            <option value="Bowl" ${item.unit === 'Bowl' ? 'selected' : ''}>Bowl</option>
+                            <option value="Liter" ${item.unit === 'Liter' ? 'selected' : ''}>Liter</option>
+                            <option value="Unit" ${item.unit === 'Unit' ? 'selected' : ''}>Unit</option>
+                        </select>
+                    </p>
+                    <p><strong>Subtotal: Rs ${(item.price * item.qty).toLocaleString()}</strong></p>
+                </div>
+                <div class="cart-item-actions">
+                    <div class="qty-control">
+                        <button class="qty-btn minus" data-index="${index}">-</button>
+                        <span>${item.qty}</span>
+                        <button class="qty-btn plus" data-index="${index}">+</button>
+                    </div>
+                    <button class="remove-item-btn" data-index="${index}">🗑️</button>
+                </div>
+            `;
+            cartItemsWrapper.appendChild(card);
+        });
+
+        totalQtyEl.textContent = totalQty;
+
+        // Add Total Price to summary if element exists
+        const summaryDetails = cartSummary.querySelector('.summary-details');
+        if (summaryDetails) {
+            summaryDetails.innerHTML = `
+                <div class="summary-row">
+                    <span data-en="Total Items" data-ur="کل آئٹمز">${currentLang === 'ur' ? 'کل آئٹمز' : 'Total Items'}</span>
+                    <span>${totalQty}</span>
+                </div>
+                <div class="summary-row" style="font-size: 1.2rem; font-weight: 800; border-top: 1px solid var(--clr-border); padding-top: 1rem; margin-top: 1rem;">
+                    <span data-en="Total Amount" data-ur="کل رقم">${currentLang === 'ur' ? 'کل رقم' : 'Total Amount'}</span>
+                    <span>Rs ${totalPrice.toLocaleString()}</span>
+                </div>
+            `;
+        }
+
+        // Button Listeners
+        document.querySelectorAll('.qty-btn.plus').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = btn.dataset.index;
+                cart[idx].qty++;
+                saveCart();
+                renderCart();
+            });
+        });
+
+        document.querySelectorAll('.qty-btn.minus').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const idx = btn.dataset.index;
+                if (cart[idx].qty > 1) {
+                    cart[idx].qty--;
+                } else {
+                    cart.splice(idx, 1);
+                }
+                saveCart();
+                renderCart();
+            });
+        });
+
+        document.querySelectorAll('.remove-item-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                cart.splice(btn.dataset.index, 1);
+                saveCart();
+                renderCart();
+            });
+        });
+
+        document.querySelectorAll('.cart-unit-select').forEach(sel => {
+            sel.addEventListener('change', (e) => {
+                const idx = e.target.dataset.index;
+                cart[idx].unit = e.target.value;
+                saveCart();
+                // Optionally re-render cart here entirely, or just let it update unit silently
+            });
+        });
+
+        // Proactively update scroll-reveal elements
+        if (typeof observer !== 'undefined') {
+            document.querySelectorAll('.cart-item-card').forEach(el => observer.observe(el));
+        }
+    };
+
+    const clearCartBtn = document.getElementById('clear-cart-btn');
+    if (clearCartBtn) {
+        clearCartBtn.addEventListener('click', () => {
+            cart = [];
+            saveCart();
+            renderCart();
+        });
+    }
+
+    updateCartBadge();
+    renderCart();
 });

@@ -37,6 +37,8 @@
                     <li><a href="#frozen-menu" data-en="Frozen Foods" data-ur="فروزن فوڈز">Frozen Foods</a>
                     </li>
                     <li><a href="#events" data-en="Events" data-ur="تقریبات">Events</a></li>
+                    <li><a href="cart.html"><span data-en="Cart" data-ur="کارٹ">Cart</span> <span id="cart-count-badge"
+                                class="badge-count">0</span></a></li>
                     <li><a href="order.html" class="btn btn-primary" data-en="Order Now" data-ur="آرڈر کریں"
                             style="margin-top:0;">Order Now</a></li>
                 </ul>
@@ -156,6 +158,9 @@
                             data-ur="خوشبودار باسمتی چاول رسیلے چکن اور ہمارے خفیہ مسالوں کے ساتھ تیار کردہ۔">
                             Aromatic
                             basmati rice cooked with succulent chicken and our secret blend of spices.</p>
+                        <button class="btn btn-sm btn-primary add-to-cart-btn" data-name-en="Chicken Biryani"
+                            data-name-ur="چکن بریانی" data-price="800" data-unit="KG" data-img="img/biryani.jpg"
+                            data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Catering 2 -->
@@ -170,6 +175,9 @@
                             data-ur="ٹماٹر، ہری مرچ اور ادرک کے ساتھ تازہ مٹن کڑاہی۔">
                             Fresh mutton wok-tossed with
                             tomatoes, green chilies, and lots of ginger.</p>
+                        <button class="btn btn-sm btn-primary add-to-cart-btn" data-name-en="Mutton Karahi"
+                            data-name-ur="مٹن کڑاہی" data-price="2200" data-unit="KG" data-img="img/karahi.jpg"
+                            data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Catering 3 -->
@@ -184,6 +192,10 @@
                             data-ur="گرم کوئلوں پر تیار کردہ چکن تکہ، ملائی بوٹی اور بیف سیخ کباب۔">
                             Chicken Tikka, Malai
                             Boti, and Beef Seekh Kababs fresh off the glowing coals.</p>
+                        <button class="btn btn-sm btn-primary add-to-cart-btn" data-name-en="Live BBQ Platter"
+                            data-name-ur="لائیو باربی کیو پلیٹر" data-price="1800" data-unit="Person"
+                            data-img="img/frozen-seekh.jpg" data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to
+                            Cart</button>
                     </div>
                 </div>
                 <!-- Catering 4 -->
@@ -197,6 +209,9 @@
                             data-ur="بادام اور پیاز کے ساتھ تیار کردہ لذیذ اور کریمی بیف قورمہ۔">
                             Rich, creamy, and
                             mildly spiced beef curry cooked with almonds and caramelized onions.</p>
+                        <button class="btn btn-sm btn-primary add-to-cart-btn" data-name-en="Shahi Beef Qorma"
+                            data-name-ur="شاہی بیف قورمہ" data-price="1600" data-unit="KG" data-img="img/qorma.jpg"
+                            data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Catering 5: Sides -->
@@ -210,6 +225,9 @@
                             data-ur="تندور سے تازہ: گارلک نان، روغنی نان، اور روایتی تندوری روٹی۔">
                             Fresh from the
                             tandoor: Garlic Naan, Roghani Naan, and traditional Tandoori Roti.</p>
+                        <button class="btn btn-sm btn-primary add-to-cart-btn" data-name-en="Naan & Roti"
+                            data-name-ur="نان اور روٹی" data-price="100" data-unit="Piece" data-img="img/naan-roti.jpg"
+                            data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Catering 6: Salads -->
@@ -224,6 +242,9 @@
                             data-ur="تازہ کچومر، کریمی رشین سلاد، اور ٹھنڈا پودینہ زیرہ رائتہ۔">
                             Fresh Kachumar, Creamy
                             Russian Salad, and cooling Mint Zeera Raita.</p>
+                        <button class="btn btn-sm btn-primary add-to-cart-btn" data-name-en="Salads & Raita"
+                            data-name-ur="سلاد اور رائتہ" data-price="350" data-unit="Bowl" data-img="img/salads.jpg"
+                            data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Catering 7: Drinks -->
@@ -238,6 +259,9 @@
                             data-ur="تازہ روح افزا، لسی، اور گرم کشمیری پنک چائے۔">
                             Refreshing Rooh Afza, Lassi, and
                             steaming Kashmiri Pink Tea with nuts.</p>
+                        <button class="btn btn-sm btn-primary add-to-cart-btn" data-name-en="Traditional Drinks"
+                            data-name-ur="مشروبات" data-price="250" data-unit="Liter" data-img="img/drinks.jpg"
+                            data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -276,9 +300,10 @@
                             data-ur="پریمیم گوشت سے بنے ہوئے نرم بیف شامی کباب۔">
                             Melt-in-your-mouth beef shami kababs
                             made with premium cuts.</p>
-                        <a href="https://wa.me/923000000000?text=Order Beef Shami Kabab"
-                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
-                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                        <button class="btn btn-sm btn-primary mt-4 add-to-cart-btn" data-name-en="Beef Shami Kabab"
+                            data-name-ur="بیف شامی کباب" data-price="1200" data-unit="Dozen"
+                            data-img="img/frozen-shami.jpg" data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to
+                            Cart</button>
                     </div>
                 </div>
 
@@ -294,9 +319,9 @@
                             data-ur="چکن کے قیمے سے بھرے ہوئے گولڈن کرسپی سموسے۔">
                             Golden crispy pastry filled with
                             savory minced chicken.</p>
-                        <a href="https://wa.me/923000000000?text=Order Chicken Samosas"
-                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
-                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                        <button class="btn btn-sm btn-primary mt-4 add-to-cart-btn" data-name-en="Chicken Samosas"
+                            data-name-ur="چکن سموسے" data-price="700" data-unit="Dozen" data-img="img/frozen-samosa.jpg"
+                            data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to Cart</button>
                     </div>
                 </div>
 
@@ -313,9 +338,11 @@
                             data-ur="مسالے دار سبزیوں سے بھرے ہوئے کرسپی رولز۔">
                             Crunchy on the outside, packed with
                             seasoned vegetables.</p>
-                        <a href="https://wa.me/923000000000?text=Order Spring Rolls"
-                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
-                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                        <button class="btn btn-sm btn-primary mt-4 add-to-cart-btn"
+                            data-name-en="Vegetable Spring Rolls" data-name-ur="ویجیٹیبل اسپرنگ رولز" data-price="800"
+                            data-unit="Dozen" data-img="img/frozen-rolls.jpg" data-en="Add to Cart"
+                            data-ur="کارٹ میں شامل کریں">Add to
+                            Cart</button>
                     </div>
                 </div>
 
@@ -332,9 +359,11 @@
                             data-ur="مستند، بڑے اور مسالے دار قیمے کے کباب۔">Authentic,
                             large, spices-infused minced
                             meat patties.</p>
-                        <a href="https://wa.me/923000000000?text=Order Chapli Kabab"
-                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
-                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                        <button class="btn btn-sm btn-primary mt-4 add-to-cart-btn"
+                            data-name-en="Peshawari Chapli Kabab" data-name-ur="پشاوری چپلی کباب" data-price="1400"
+                            data-unit="KG" data-img="img/karahi.jpg" data-en="Add to Cart"
+                            data-ur="کارٹ میں شامل کریں">Add to
+                            Cart</button>
                     </div>
                 </div>
 
@@ -351,9 +380,10 @@
                             data-ur="آلو اور مٹر سے بھرا روایتی سموسہ۔">The classic potato
                             and pea filled triangle of
                             joy.</p>
-                        <a href="https://wa.me/923000000000?text=Order Aloo Samosas"
-                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
-                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                        <button class="btn btn-sm btn-primary mt-4 add-to-cart-btn" data-name-en="Punjabi Aloo Samosa"
+                            data-name-ur="پنجابی آلو سموسہ" data-price="400" data-unit="Dozen"
+                            data-img="img/frozen-samosa.jpg" data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to
+                            Cart</button>
                     </div>
                 </div>
                 <!-- Card 6 -->
@@ -369,9 +399,11 @@
                             data-ur="فوری فرائی یا گرل کرنے کے لیے تیار۔">Ready to be
                             grilled or pan-fried in minutes.
                         </p>
-                        <a href="https://wa.me/923000000000?text=Order Seekh Kabab" class="btn btn-sm btn-whatsapp mt-4"
-                            target="_blank" data-en="Order on WhatsApp" data-ur="واٹس ایپ پر آرڈر کریں">Order on
-                            WhatsApp</a>
+                        <button class="btn btn-sm btn-primary mt-4 add-to-cart-btn"
+                            data-name-en="Half-Cooked Seekh Kabab" data-name-ur="ہاف ککڈ سیخ کباب" data-price="1500"
+                            data-unit="KG" data-img="img/frozen-seekh.jpg" data-en="Add to Cart"
+                            data-ur="کارٹ میں شامل کریں">Add to
+                            Cart</button>
                     </div>
                 </div>
                 <!-- Card 7: Frozen Paratha -->
@@ -387,9 +419,10 @@
                             data-ur="تہہ دار اور مزیدار پراٹھے پکانے کے لیے تیار۔">
                             Flaky, buttery, and multi-layered
                             ready to cook parathas.</p>
-                        <a href="https://wa.me/923000000000?text=Order Lacha Paratha"
-                            class="btn btn-sm btn-whatsapp mt-4" target="_blank" data-en="Order on WhatsApp"
-                            data-ur="واٹس ایپ پر آرڈر کریں">Order on WhatsApp</a>
+                        <button class="btn btn-sm btn-primary mt-4 add-to-cart-btn" data-name-en="Classic Lacha Paratha"
+                            data-name-ur="کلاسک لچھا پراٹھا" data-price="450" data-unit="Pack (10 pcs)"
+                            data-img="img/paratha.jpg" data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to
+                            Cart</button>
                     </div>
                 </div>
                 <!-- Card 8: Frozen Tikka Boti -->
@@ -405,9 +438,10 @@
                             data-ur="بغیر ہڈی چکن، روایتی مسالوں میں میرینیٹ شدہ۔">
                             Boneless chicken fully marinated in
                             traditional spicy yogurt.</p>
-                        <a href="https://wa.me/923000000000?text=Order Tikka Boti" class="btn btn-sm btn-whatsapp mt-4"
-                            target="_blank" data-en="Order on WhatsApp" data-ur="واٹس ایپ پر آرڈر کریں">Order on
-                            WhatsApp</a>
+                        <button class="btn btn-sm btn-primary mt-4 add-to-cart-btn" data-name-en="Marinated Tikka Boti"
+                            data-name-ur="میرینیٹڈ چکن تکہ بوٹی" data-price="1600" data-unit="KG"
+                            data-img="img/tikka-boti.jpg" data-en="Add to Cart" data-ur="کارٹ میں شامل کریں">Add to
+                            Cart</button>
                     </div>
                 </div>
             </div>
@@ -568,6 +602,52 @@
         </div>
     </section>
 
+    <!-- Review Section -->
+    <section id="reviews" class="section-padding reviews-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="subtitle" data-en="Testimonials" data-ur="تاثرات">Testimonials</span>
+                <h2 class="section-title" data-en="What Our Customers Say" data-ur="ہمارے صارفین کیا کہتے ہیں">What Our
+                    Customers Say</h2>
+            </div>
+
+            <div class="reviews-grid mt-8">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p data-en="&ldquo;The biryani was outstanding! Truly authentic taste and the event management was professional.&rdquo;"
+                        data-ur="&ldquo;بریانی بہت کمال کی تھی! بالکل روایتی ذائقہ اور ایونٹ مینجمنٹ بہت ہی پروفیشنل تھی۔&rdquo;">
+                        &ldquo;The biryani was outstanding! Truly authentic taste and the event management was
+                        professional.&rdquo;</p>
+                    <div class="reviewer">
+                        <strong>Ahmed Khan</strong>
+                        <span data-en="Wedding Event" data-ur="شادی کا ایونٹ">Wedding Event</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p data-en="&ldquo;Best frozen shami kababs in town. My family loves them for quick breakfast.&rdquo;"
+                        data-ur="&ldquo;شہر کے بہترین فروزن شامی کباب۔ میرا خاندان انہیں ناشتے میں بہت شوق سے کھاتا ہے۔&rdquo;">
+                        &ldquo;Best frozen shami kababs in town. My family loves them for quick breakfast.&rdquo;</p>
+                    <div class="reviewer">
+                        <strong>Saira Malik</strong>
+                        <span data-en="Regular Customer" data-ur="باقاعدہ صارف">Regular Customer</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p data-en="&ldquo;We ordered a live BBQ for our office party. Everyone was impressed by the quality of meat.&rdquo;"
+                        data-ur="&ldquo;ہم نے اپنی آفس پارٹی کے لیے لائیو باربی کیو منگوایا تھا۔ سب گوشت کے معیار سے بہت متاثر ہوئے۔&rdquo;">
+                        &ldquo;We ordered a live BBQ for our office party. Everyone was impressed by the quality of
+                        meat.&rdquo;</p>
+                    <div class="reviewer">
+                        <strong>Zeeshan Ali</strong>
+                        <span data-en="Corporate Client" data-ur="کارپوریٹ کلائنٹ">Corporate Client</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-grid">
@@ -630,6 +710,7 @@
         </div>
     </footer>
 
+    <div class="toast-container" id="toast-container"></div>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
 </body>
