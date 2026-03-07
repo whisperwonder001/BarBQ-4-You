@@ -364,28 +364,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         if (selectedItems.length > 0) {
-            dynamicItemsSection.style.display = 'block';
             updateAddedItemsUI();
-
-            // Auto-select 'both' so the dropdown populates items correctly
-            setTimeout(() => {
-                orderType.value = 'both';
-                orderType.dispatchEvent(new Event('change'));
-            }, 0);
         }
 
-        orderType.addEventListener('change', (e) => {
-            const val = e.target.value;
-            dynamicItemsSection.style.display = 'block';
-
-            // Clear current items
+        // Initial setup for items
+        const populateItems = () => {
             itemSelect.innerHTML = `<option value="" disabled selected data-en="Choose an item..." data-ur="ایک آئٹم منتخب کریں...">Choose an item...</option>`;
 
-            let itemsToDisplay = [];
-            if (val === 'catering') itemsToDisplay = menuItems.catering;
-            if (val === 'frozen') itemsToDisplay = menuItems.frozen;
-            if (val === 'both') itemsToDisplay = [...menuItems.catering, ...menuItems.frozen];
-
+            let itemsToDisplay = [...menuItems.catering, ...menuItems.frozen];
             const currentLang = localStorage.getItem('lang') || 'en';
 
             itemsToDisplay.forEach((item, index) => {
@@ -400,7 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Re-apply language to newly created options
             updateLanguage(currentLang);
-        });
+        };
+        
+        populateItems();
 
         // updateAddedItemsUI moved up
 
