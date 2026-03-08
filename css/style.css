@@ -1258,15 +1258,68 @@ h4,
         /* Take full width of parent li */
         padding: 0.8rem 1.5rem;
         border-radius: 12px;
-        background: transparent;
+    }
+
+    /* Premium Pastel Backgrounds for Menu Items */
+    .nav-links li:nth-child(1) a:not(.btn-primary) {
+        background: rgba(56, 189, 248, 0.08);
+        /* Home - Light Blue */
+    }
+
+    .nav-links li:nth-child(2) a:not(.btn-primary) {
+        background: rgba(52, 211, 153, 0.08);
+        /* About - Emerald Green */
+    }
+
+    .nav-links li:nth-child(3) a:not(.btn-primary) {
+        background: rgba(250, 204, 21, 0.12);
+        /* Catering - Yellow */
+    }
+
+    .nav-links li:nth-child(4) a:not(.btn-primary) {
+        background: rgba(167, 139, 250, 0.08);
+        /* Frozen - Purple */
+    }
+
+    .nav-links li:nth-child(5) a:not(.btn-primary) {
+        background: rgba(244, 114, 182, 0.08);
+        /* Events - Pink */
+    }
+
+    .nav-links li:nth-child(6) a:not(.btn-primary) {
+        background: rgba(163, 230, 53, 0.08);
+        /* Cart - Lime */
     }
 
     .nav-links a:not(.btn-primary):hover,
     .nav-links a:not(.btn-primary):active {
         color: var(--clr-primary) !important;
-        background: rgba(234, 88, 12, 0.08);
-        /* Soft orange pill background */
         transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links li:nth-child(1) a:not(.btn-primary):hover {
+        background: rgba(56, 189, 248, 0.15);
+    }
+
+    .nav-links li:nth-child(2) a:not(.btn-primary):hover {
+        background: rgba(52, 211, 153, 0.15);
+    }
+
+    .nav-links li:nth-child(3) a:not(.btn-primary):hover {
+        background: rgba(250, 204, 21, 0.18);
+    }
+
+    .nav-links li:nth-child(4) a:not(.btn-primary):hover {
+        background: rgba(167, 139, 250, 0.15);
+    }
+
+    .nav-links li:nth-child(5) a:not(.btn-primary):hover {
+        background: rgba(244, 114, 182, 0.15);
+    }
+
+    .nav-links li:nth-child(6) a:not(.btn-primary):hover {
+        background: rgba(163, 230, 53, 0.15);
     }
 
     .nav-links a:not(.btn-primary)::after {
