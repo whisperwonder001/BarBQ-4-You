@@ -1144,22 +1144,26 @@ h4,
 /* MOBILE VERSION (max-width: 768px) */
 @media (max-width: 768px) {
 
-    /* Navbar Mobile Behavior */
+    /* Navbar Mobile Behavior - Premium Redesign */
     .nav-controls {
         position: fixed;
         top: 0;
         right: -100%;
         width: 100%;
         height: 100vh;
-        background: var(--clr-nav-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        height: 100dvh;
+        background: var(--clr-bg-main);
         flex-direction: column;
         justify-content: center;
-        transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 3rem;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 5rem 2rem;
         z-index: 999;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        display: flex;
+        overflow-y: auto;
+    }
+
+    [data-theme="dark"] .nav-controls {
+        background: var(--clr-bg-section);
     }
 
     .nav-controls.active {
@@ -1169,7 +1173,7 @@ h4,
     [dir="rtl"] .nav-controls {
         right: auto;
         left: -100%;
-        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     [dir="rtl"] .nav-controls.active {
@@ -1181,31 +1185,118 @@ h4,
         width: 100%;
         align-items: center;
         gap: 2.5rem;
+        margin: auto 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease forwards;
+    }
+
+    .nav-controls.active .nav-links li {
+        animation: slideUpFade 0.4s ease forwards;
+    }
+
+    /* Staggered entry animation */
+    .nav-controls.active .nav-links li:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .nav-controls.active .nav-links li:nth-child(2) {
+        animation-delay: 0.15s;
+    }
+
+    .nav-controls.active .nav-links li:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+
+    .nav-controls.active .nav-links li:nth-child(4) {
+        animation-delay: 0.25s;
+    }
+
+    .nav-controls.active .nav-links li:nth-child(5) {
+        animation-delay: 0.3s;
+    }
+
+    .nav-controls.active .nav-links li:nth-child(6) {
+        animation-delay: 0.35s;
+    }
+
+    .nav-controls.active .nav-links li:nth-child(7) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes slideUpFade {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .nav-links a:not(.btn-primary) {
         color: var(--clr-text-main) !important;
-        font-size: 1.8rem;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        transition: var(--transition);
+        font-family: var(--font-primary);
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        transition: color 0.3s ease, transform 0.3s ease;
         text-shadow: none !important;
+        display: inline-block;
     }
 
-    .nav-links a:not(.btn-primary):hover {
+    .nav-links a:not(.btn-primary):hover,
+    .nav-links a:not(.btn-primary):active {
         color: var(--clr-primary) !important;
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     .nav-links a:not(.btn-primary)::after {
         display: none;
-        /* remove hover line from mobile for a cleaner look */
+    }
+
+    .nav-links a.btn-primary {
+        font-size: 1.4rem;
+        padding: 1.2rem 3rem;
+        border-radius: 50px;
+        font-weight: 700;
+        box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4);
+        margin-top: 1rem;
+        display: inline-block;
     }
 
     .utils {
-        margin-top: 2.5rem;
+        margin-top: auto;
+        padding-top: 2rem;
+        justify-content: center;
+        gap: 1.5rem;
+        background: transparent;
+        border: none;
+        opacity: 0;
+    }
+
+    .nav-controls.active .utils {
+        animation: slideUpFade 0.4s ease forwards;
+        animation-delay: 0.5s;
+    }
+
+    .utils button {
+        background: var(--clr-bg-card);
+        color: var(--clr-text-main) !important;
+        box-shadow: var(--shadow-sm);
         padding: 0.5rem 1rem;
-        transform: scale(1.2);
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        border: 1px solid var(--clr-border);
+    }
+
+    .utils button.active {
+        background: var(--clr-primary) !important;
+        color: white !important;
+        border-color: var(--clr-primary);
     }
 
     .mobile-toggle {
