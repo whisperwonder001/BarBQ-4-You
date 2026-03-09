@@ -563,6 +563,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    /* --- Contact Form WhatsApp Backend --- */
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent page reload
+
+            const nameEl = document.getElementById('c-name');
+            const emailEl = document.getElementById('c-email');
+            const subjectEl = document.getElementById('c-subject');
+            const messageEl = document.getElementById('c-message');
+
+            if (nameEl && emailEl && messageEl) {
+                const name = nameEl.value.trim();
+                const email = emailEl.value.trim();
+                const subject = subjectEl ? subjectEl.value.trim() : '';
+                const message = messageEl.value.trim();
+
+                const waNumber = '923000000000'; // Website's WhatsApp Number
+                let text = `*New Contact Message*\n\n`;
+                text += `*Name:* ${name}\n`;
+                text += `*Email:* ${email}\n`;
+                if (subject) text += `*Subject:* ${subject}\n`;
+                text += `\n*Message:*\n${message}`;
+
+                const encodedText = encodeURIComponent(text);
+                const waUrl = `https://wa.me/${waNumber}?text=${encodedText}`;
+
+                // Redirect to WhatsApp chat tab
+                window.open(waUrl, '_blank');
+
+                // Clear the form and show toast if function exists
+                contactForm.reset();
+                if (typeof showToast === 'function') {
+                    const currentLang = localStorage.getItem('lang') || 'en';
+                    showToast(currentLang === 'ur' ? 'پیغام واٹس ایپ پر بھیجا جا رہا ہے۔' : 'Redirecting to WhatsApp...');
+                }
+            }
+        });
+    }
+
     updateCartBadge();
     renderCart();
 });
